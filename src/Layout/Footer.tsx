@@ -32,28 +32,23 @@ export const Footer = () => {
                 </div>
                 <div className="flex">
                     <div className="flex flex-col gap-2 pr-4 text-xs text-gray-400">
-                        <div className="flex justify-center gap-2">
+                        <div className="flex gap-2">
                             <CiMail className="h-6 w-10" />
                             <div className="flex items-center">
-                                info@syntaxeror.com
+                                info@doublessevent.com
                             </div>
                         </div>
                         <div className="flex gap-2">
-                            <div>
-                                <CiPhone className="h-6 w-10" />
-                            </div>
-
-                            <div className="flex flex-col items-center">
-                                <div>+216 55 135 774 </div>
-                                <div>+216 55 850 259 </div>
+                            <CiPhone className="h-6 w-10" />
+                            <div className="flex items-center">
+                                +39 350 840 7378
                             </div>
                         </div>
                         <div className="flex gap-2">
                             <CiLocationOn className="h-6 w-10" />
-                            <div className="flex flex-col justify-center text-xs">
-                                <div> 11 makther street </div>
-                                <div> Borj louzir, Ariena </div>
-                                <div> Tunisia </div>
+                            <div className="flex items-center">
+                                {' '}
+                                Via Leonardo Da Vinci (VA){' '}
                             </div>
                         </div>
                     </div>

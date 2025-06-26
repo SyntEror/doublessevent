@@ -1,9 +1,5 @@
-
-
-const Temoignages = () => {
-    return <>
-        Temoignages Section
-    </>
+const Contacts = () => {
+    return <>Contacts Section</>
 }
 
-export default Temoignages
+export default Contacts

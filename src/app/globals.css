@@ -1,24 +1,65 @@
-@import 'tailwindcss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-    --background: #ffffff;
-    --foreground: #171717;
+    --background: #ffffff; /* White */
+    --foreground: #1F1F1F; /* Black from dark in Tailwind config */
+    --primary: #FFD700; /* Gold */
+    --secondary: #F5E6E8; /* Powder Pink */
 }
 
 @theme inline {
     --color-background: var(--background);
     --color-foreground: var(--foreground);
+    --color-primary: var(--primary);
+    --color-secondary: var(--secondary);
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --background: #0a0a0a;
-        --foreground: #ededed;
+        --background: #1F1F1F; /* Black */
+        --foreground: #F5E6E8; /* Powder Pink for contrast */
+        --primary: #FFD700; /* Gold remains the same */
+        --secondary: #F5E6E8; /* Powder Pink remains the same */
     }
 }
 
 body {
     background: var(--background);
     color: var(--foreground);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Inter', sans-serif; /* Default to Inter for body text */
+}
+
+/* Ensure headings use Playfair Display */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+}
+
+::-webkit-scrollbar {
+    width: 0.3rem;
+    height: 0.3rem;
+}
+::-webkit-scrollbar-track {
+    background: #00000000;
+}
+::-webkit-scrollbar-thumb {
+    @apply bg-primary/40;
+    border-radius: 0.2rem;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.preserve-3d,
+.backface-hidden {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+
+/* Animation styles from Tailwind config */
+@keyframes swirl {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

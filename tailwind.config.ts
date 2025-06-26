@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 import tailwind_scrollbar from 'tailwind-scrollbar'
 import { type Config } from 'tailwindcss'
+import plugin from 'tailwindcss/plugin'
 
 export default {
     darkMode: 'class',
@@ -28,5 +29,14 @@ export default {
             animation: { swirl: 'swirl 60s linear infinite' },
         },
     },
-    plugins: [tailwind_scrollbar],
+    plugins: [
+        tailwind_scrollbar,
+        plugin(({ addUtilities }) => {
+            addUtilities({
+                '.perspective-1000': { perspective: '1000px' },
+                '.preserve-3d': { transformStyle: 'preserve-3d' },
+                '.backface-hidden': { backfaceVisibility: 'hidden' },
+            })
+        }),
+    ],
 } satisfies Config

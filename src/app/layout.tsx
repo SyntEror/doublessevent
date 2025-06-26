@@ -1,3 +1,5 @@
+import { Footer } from '@/Layout/Footer'
+import Navbar from '@/Layout/Navbar'
 import type { Metadata } from 'next'
 import { ReactNode } from 'react'
 import './globals.css'
@@ -14,7 +16,12 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className="relative overflow-x-hidden">{children}</body>
+            <body className="relative overflow-x-hidden">
+                {children}
+                <Navbar />
+                <main className="overflow-x-hidden px-8 pt-24">{children}</main>
+                <Footer />
+            </body>
         </html>
     )
 }
