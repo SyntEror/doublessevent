@@ -11,10 +11,14 @@ export default {
                 '-10': '-10',
             },
             colors: {
-                primary: '#5DA1FF',
-                galaxy: { 50: '#1b1e2b', 100: '#11131d' },
+                primary: '#FFD700', // Gold
+                secondary: '#F5E6E8', // Powder Pink
+                dark: '#1F1F1F', // Black
             },
-            fontFamily: { sans: ['Inter', 'sans-serif'] },
+            fontFamily: {
+                playfair: ['Playfair Display', 'serif'],
+                inter: ['Inter', 'sans-serif'],
+            },
             keyframes: {
                 swirl: {
                     '0%': { transform: 'rotate(0deg)' },

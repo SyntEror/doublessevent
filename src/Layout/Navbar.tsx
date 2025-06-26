@@ -10,7 +10,7 @@ const Navbar: FC = () => {
     return (
         <m.nav
             className={
-                `fixed z-50 flex w-full items-center justify-between overflow-x-hidden bg-galaxy-100/60 px-8 py-4 backdrop-blur transition-all duration-300 ease-in-out` +
+                `bg-galaxy-100/60 fixed z-50 flex w-full items-center justify-between overflow-x-hidden px-8 py-4 backdrop-blur transition-all duration-300 ease-in-out` +
                 ` ${scrollDirection === 'down' ? '-top-24' : 'top-0'}`
             }
         >
@@ -23,13 +23,14 @@ const Navbar: FC = () => {
             />
             <div className="hidden gap-8 md:flex">
                 <a href={'#services'}>Services</a>
-                <a href={'#pricing'}>Pricing</a>
-                <a href={'#clients'}>Clients</a>
-                <a href={'#about'}>About</a>
+                <a href={'#galerie'}>Galerie</a>
+                <a href={'#temoignages'}>Témoignages</a>
+                <a href={'#reserver'}>Réserver ou Demander un Devis</a>
+                <a href={'#contacts'}>Contacts</a>
             </div>
             <a
                 href={'#contact'}
-                className="rounded-md bg-primary/20 px-4 py-2 text-white/95"
+                className="bg-primary/20 rounded-md px-4 py-2 text-white/95"
             >
                 Contact
             </a>
