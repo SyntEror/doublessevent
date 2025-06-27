@@ -14,7 +14,9 @@ export default function Home() {
 
     return sections.map((Component, index) => (
         <Reveal key={index}>
-            <Component />
+            <div className="mx-10">
+                <Component />
+            </div>
         </Reveal>
     ))
 }

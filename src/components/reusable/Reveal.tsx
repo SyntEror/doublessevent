@@ -22,7 +22,7 @@ export default function Reveal({ children, amount = 0.3 }: RevealProps) {
     })
 
     return (
-        <div ref={ref} className="relative overflow-hidden">
+        <div ref={ref} className="reveal-component relative overflow-hidden">
             <motion.div
                 variants={variants}
                 initial="hidden"

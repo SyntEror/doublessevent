@@ -15,11 +15,11 @@ const Navbar: FC = () => {
             }
         >
             <Image
-                src="/logo-light.png"
+                src="/logo.jpg"
                 alt="SyntaxEror Logo"
                 width={3320}
                 height={1000}
-                className="w-36 md:w-52"
+                className="w-36 md:w-12"
             />
             <div className="hidden gap-8 md:flex">
                 <a href={'#services'}>Services</a>
@@ -30,7 +30,7 @@ const Navbar: FC = () => {
             </div>
             <a
                 href={'#contact'}
-                className="bg-primary/20 rounded-md px-4 py-2 text-white/95"
+                className="rounded-md bg-primary/20 px-4 py-2 text-white/95"
             >
                 Contact
             </a>
