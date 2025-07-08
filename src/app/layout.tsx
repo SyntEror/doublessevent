@@ -1,5 +1,7 @@
 import { Footer } from '@/Layout/Footer'
 import Navbar from '@/Layout/Navbar'
+import { ClientProviders } from '@/lib/ClientProviders'
+import { LazyMotion, domAnimation } from 'framer-motion'
 import type { Metadata } from 'next'
 import { ReactNode } from 'react'
 import './globals.css'
@@ -16,11 +18,13 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <Navbar />
-            <body className="relative overflow-x-hidden px-8 pt-24">
-                {children}
+            <body className="relative overflow-x-hidden">
+                <LazyMotion features={domAnimation}>
+                    <Navbar />
+                    <ClientProviders>{children}</ClientProviders>
+                    <Footer />
+                </LazyMotion>
             </body>
-            <Footer />
         </html>
     )
 }

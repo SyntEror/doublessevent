@@ -11,12 +11,13 @@
         "prettier-write": "prettier --write ."
     },
     "dependencies": {
+        "autoprefixer": "^10.4.21",
         "framer-motion": "^12.16.0",
         "next": "15.3.3",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
         "react-icons": "^5.5.0",
-        "autoprefixer": "^10.4.21"
+        "react-scroll-parallax": "^3.4.5"
     },
     "devDependencies": {
         "@eslint/eslintrc": "^3",

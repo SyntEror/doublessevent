@@ -9,14 +9,14 @@ export const Footer = () => {
             <div className="flex w-full flex-col items-center justify-between gap-y-10 md:flex-row md:items-start md:gap-y-0">
                 <div className="flex-col space-y-2">
                     <Image
-                        src="/logo-light.png"
-                        alt="SyntaxEror Logo"
+                        src="/logo.jpg"
+                        alt="DoubleSS Logo"
                         width={3320}
                         height={1000}
-                        className="w-40"
+                        className="ml-16 w-20"
                     />
                     <div className="pl-6 text-xs font-light text-gray-400">
-                        It&#39;s a feature not a bug
+                        L’art de sublimer vos événements
                     </div>
                     <div className="flex items-center justify-center gap-2">
                         <CiFacebook />
@@ -26,9 +26,9 @@ export const Footer = () => {
                 </div>
                 <div className="flex justify-center gap-8 text-gray-400">
                     <a href={'#services'}>Services</a>
-                    <a href={'#pricing'}>Pricing</a>
-                    <a href={'#clients'}>Clients</a>
-                    <a href={'#about'}>About</a>
+                    <a href={'#pricing'}>Galerie</a>
+                    <a href={'#temoignages'}>Temoignages</a>
+                    <a href={'#reserver'}>Reserver/demander un devis</a>
                 </div>
                 <div className="flex">
                     <div className="flex flex-col gap-2 pr-4 text-xs text-gray-400">

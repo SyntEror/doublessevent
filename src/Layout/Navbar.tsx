@@ -16,7 +16,7 @@ const Navbar: FC = () => {
         >
             <Image
                 src="/logo.jpg"
-                alt="SyntaxEror Logo"
+                alt="DoubleSS Logo"
                 width={3320}
                 height={1000}
                 className="w-36 md:w-12"
@@ -30,7 +30,7 @@ const Navbar: FC = () => {
             </div>
             <a
                 href={'#contact'}
-                className="rounded-md bg-primary/20 px-4 py-2 text-white/95"
+                className="rounded-md bg-secondary px-4 py-2 text-black"
             >
                 Contact
             </a>
