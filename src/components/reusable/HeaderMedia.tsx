@@ -58,7 +58,7 @@ export const HeaderMedia: FC = () => {
                             : 'left-2 top-1/2 pt-10 md:px-28'
                     } z-20 flex flex-col items-center justify-center px-6 text-left`}
                 >
-                    <h1 className="max-w-xs px-4 text-3xl leading-10 text-zinc-100 sm:max-w-6xl md:px-0 md:text-8xl md:leading-[85px]">
+                    <h1 className="px-4 text-7xl text-zinc-100 sm:max-w-6xl md:px-0 md:text-8xl md:leading-[85px]">
                         Double SS events
                     </h1>
                 </div>

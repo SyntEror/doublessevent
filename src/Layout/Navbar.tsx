@@ -19,7 +19,7 @@ const Navbar: FC = () => {
                 alt="DoubleSS Logo"
                 width={3320}
                 height={1000}
-                className="w-36 md:w-12"
+                className="w-14 md:w-12"
             />
             <div className="hidden gap-8 md:flex">
                 <a href={'#services'}>Services</a>

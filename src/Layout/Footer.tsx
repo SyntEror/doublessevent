@@ -24,7 +24,7 @@ export const Footer = () => {
                         <FaLinkedin />
                     </div>
                 </div>
-                <div className="flex justify-center gap-8 text-gray-400">
+                <div className="flex flex-col items-center justify-center gap-8 text-gray-400 md:flex-row">
                     <a href={'#services'}>Services</a>
                     <a href={'#pricing'}>Galerie</a>
                     <a href={'#temoignages'}>Temoignages</a>
