@@ -23,10 +23,9 @@ const Navbar: FC = () => {
             />
             <div className="hidden gap-8 md:flex">
                 <a href={'#services'}>Services</a>
-                <a href={'#galerie'}>Galerie</a>
-                <a href={'#temoignages'}>Témoignages</a>
+                <a href={'#galerie'}>Qui sommes nous</a>
+                {/*<a href={'#temoignages'}>Témoignages</a>*/}
                 <a href={'#reserver'}>Réserver ou Demander un Devis</a>
-                <a href={'#contacts'}>Contacts</a>
             </div>
             <a
                 href={'#contact'}
