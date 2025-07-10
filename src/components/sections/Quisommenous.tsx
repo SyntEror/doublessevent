@@ -3,7 +3,7 @@ import Image from 'next/image'
 const Quisommenous = () => {
     return (
         <section className="py-16" id="quisommenous">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto flex max-w-7xl flex-col px-4 sm:px-6 md:gap-8 lg:px-8">
                 <h2 className="mb-12 text-center text-2xl font-bold text-secondary md:text-6xl">
                     🤔 Qui sommes-nous ? 🤔
                 </h2>
