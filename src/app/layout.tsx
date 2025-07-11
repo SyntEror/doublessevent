@@ -42,7 +42,9 @@ export default function RootLayout({
     return (
         <html lang="en">
             <head>
-                <title>DoubleSS event - L'art de sublimer vos événements</title>
+                <title>
+                    DoubleSS event - L&#39;art de sublimer vos événements
+                </title>
                 <link rel="icon" href="/logo.png" />
             </head>
             <body className="relative overflow-x-hidden">
