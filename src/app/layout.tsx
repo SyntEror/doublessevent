@@ -9,6 +9,29 @@ export const metadata: Metadata = {
     title: "DoubleSS event - L'art de sublimer vos événements",
     description:
         "DoubleSS event est une entreprise spécialisée dans l'organisation d'événements uniques et mémorables. Notre équipe passionnée s'engage à transformer vos idées en réalité, en créant des expériences sur mesure qui laissent une empreinte indélébile.",
+    icons: [{ rel: 'icon', url: '/logo.png' }],
+    openGraph: {
+        title: "DoubleSS event - L'art de sublimer vos événements",
+        description:
+            "DoubleSS event est une entreprise spécialisée dans l'organisation d'événements uniques et mémorables. Notre équipe passionnée s'engage à transformer vos idées en réalité, en créant des expériences sur mesure qui laissent une empreinte indélébile.",
+        url: 'https://www.doublessevent.com',
+        images: [
+            {
+                url: '/logo.png',
+                width: 1200,
+                height: 630,
+                alt: 'DoubleSS event graph image',
+            },
+        ],
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: "DoubleSS event - L'art de sublimer vos événements",
+        description:
+            "DoubleSS event est une entreprise spécialisée dans l'organisation d'événements uniques et mémorables. Notre équipe passionnée s'engage à transformer vos idées en réalité, en créant des expériences sur mesure qui laissent une empreinte indélébile.",
+        images: ['/logo.png'],
+    },
 }
 
 export default function RootLayout({
@@ -19,6 +42,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <head>
+                <title>DoubleSS event - L'art de sublimer vos événements</title>
                 <link rel="icon" href="/logo.png" />
             </head>
             <body className="relative overflow-x-hidden">
