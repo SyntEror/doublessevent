@@ -33,7 +33,7 @@ const Services = () => (
                 </motion.span>
             </motion.h2>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                {services.map((service, index) => (
+                {services.map(service => (
                     <motion.article
                         key={service.title}
                         className="group relative flex flex-col overflow-hidden rounded-2xl bg-secondary shadow-lg transition-all duration-300 hover:shadow-2xl"
