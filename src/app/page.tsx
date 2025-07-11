@@ -1,7 +1,7 @@
 import { HeaderMedia } from '@/components/reusable/HeaderMedia'
-import Reveal from '@/components/reusable/Reveal'
 import Quisommenous from '@/components/sections/Quisommenous'
 import Services from '@/components/sections/Services'
+import Stands from '@/components/sections/Stands'
 import Head from 'next/head'
 import { useMemo } from 'react'
 
@@ -23,7 +23,7 @@ export default function Home() {
             name: 'SyntaxEror Team',
         },
     }
-    const sections = useMemo(() => [Quisommenous, Services], [])
+    const sections = useMemo(() => [Quisommenous, Services, Stands], [])
     // , Galerie, Quisommenous, Reservation, Contacts
 
     return (
@@ -51,11 +51,9 @@ export default function Home() {
             <main>
                 <HeaderMedia />
                 {sections.map((Component, index) => (
-                    <Reveal key={index}>
-                        <div className="mx-10">
-                            <Component />
-                        </div>
-                    </Reveal>
+                    <div className="mx-10" key={index}>
+                        <Component />
+                    </div>
                 ))}
             </main>
         </>

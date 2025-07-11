@@ -26,6 +26,7 @@ const Navbar: FC = () => {
                 <a href={'#quisommenous'}>Qui sommes nous</a>
                 {/*<a href={'#temoignages'}>Témoignages</a>*/}
                 <a href={'#reserver'}>Réserver ou Demander un Devis</a>
+                <a href={'#stands'}>Nos offre de stands</a>
             </div>
             <a
                 href={'#contact'}
