@@ -53,10 +53,11 @@ const Quisommenous = () => {
                         className="flex w-full items-center justify-center text-center text-xl font-medium leading-relaxed sm:text-2xl md:w-1/2 md:text-left lg:w-3/5 lg:text-3xl"
                     >
                         DoubleSS Event est une entreprise spécialisée dans
-                        l'organisation d'événements uniques et mémorables. Notre
-                        équipe passionnée s'engage à transformer vos idées en
-                        réalité, en créant des expériences sur mesure qui
-                        laissent une empreinte indélébile.
+                        l&#39;organisation d&#39;événements uniques et
+                        mémorables. Notre équipe passionnée s&#39;engage à
+                        transformer vos idées en réalité, en créant des
+                        expériences sur mesure qui laissent une empreinte
+                        indélébile.
                     </motion.div>
                 </motion.div>
                 <motion.div
