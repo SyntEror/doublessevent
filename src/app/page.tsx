@@ -14,9 +14,8 @@ export default function Home() {
         url: 'https://doublessevent.com',
         logo: 'https://doublessevent.com/logo.png',
         sameAs: [
-            'https://www.facebook.com/doublessevent',
-            'https://www.instagram.com/doublessevent',
-            'https://www.linkedin.com/company/doublessevent',
+            'https://www.facebook.com/sonia.bentelharmassi',
+            'https://www.instagram.com/doubless.event',
         ],
         author: {
             '@type': 'organization',
