@@ -2,22 +2,62 @@ import { HeaderMedia } from '@/components/reusable/HeaderMedia'
 import Reveal from '@/components/reusable/Reveal'
 import Quisommenous from '@/components/sections/Quisommenous'
 import Services from '@/components/sections/Services'
+import Head from 'next/head'
 import { useMemo } from 'react'
 
 export default function Home() {
+    const schema = {
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        headline: "DoubleSS Event - L'art de sublimer vos événements",
+        name: 'DoubleSS Event',
+        url: 'https://doublessevent.com',
+        logo: 'https://doublessevent.com/logo.jpg',
+        sameAs: [
+            'https://www.facebook.com/doublessevent',
+            'https://www.instagram.com/doublessevent',
+            'https://www.linkedin.com/company/doublessevent',
+        ],
+        author: {
+            '@type': 'organization',
+            name: 'SyntaxEror Team',
+        },
+    }
     const sections = useMemo(() => [Quisommenous, Services], [])
     // , Galerie, Quisommenous, Reservation, Contacts
 
     return (
         <>
-            <HeaderMedia />
-            {sections.map((Component, index) => (
-                <Reveal key={index}>
-                    <div className="mx-10">
-                        <Component />
-                    </div>
-                </Reveal>
-            ))}
+            <Head>
+                <title>DoubleSS | L&#39;art de sublimer vos événements</title>
+                <meta
+                    name="description"
+                    content="DoubleSS event est une entreprise spécialisée dans l'organisation d'événements uniques et mémorables."
+                />
+                <meta property="og:title" content="DoubleSS Events" />
+                <meta
+                    property="og:description"
+                    content="Avec DoubleSS event, transformez vos idées en réalité."
+                />
+                <meta
+                    property="og:image"
+                    content="https://doublessevent.com/logo.jpg"
+                />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+                />
+            </Head>
+            <main>
+                <HeaderMedia />
+                {sections.map((Component, index) => (
+                    <Reveal key={index}>
+                        <div className="mx-10">
+                            <Component />
+                        </div>
+                    </Reveal>
+                ))}
+            </main>
         </>
     )
 }
