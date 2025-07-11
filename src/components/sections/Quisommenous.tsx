@@ -66,6 +66,7 @@ const Quisommenous = () => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.3 }}
+                    id="localisation"
                 >
                     <h3 className="mb-8 flex items-center justify-center gap-2 text-center text-3xl font-bold text-secondary sm:text-4xl md:text-5xl">
                         <MapPin className="h-8 w-8" /> Notre Localisation

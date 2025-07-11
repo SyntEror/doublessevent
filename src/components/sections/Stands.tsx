@@ -22,9 +22,9 @@ const StandOffers = () => {
     }
 
     return (
-        <section id="stands" className="px-6 py-12">
+        <section id="stands" className="px-1 py-12 md:px-6">
             <motion.div
-                className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+                className="mx-auto max-w-7xl sm:px-6 lg:px-8"
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true }}
@@ -36,7 +36,7 @@ const StandOffers = () => {
 
                 <div className="flex flex-col justify-around gap-y-10 md:flex-row">
                     <motion.div
-                        className="flex w-full flex-col rounded-lg bg-white p-6 shadow-lg md:w-[500px]"
+                        className="flex w-full flex-col rounded-lg bg-white p-3.5 shadow-lg md:w-[500px] md:p-6"
                         variants={item}
                     >
                         <div className="mb-4 flex items-center justify-center">
@@ -67,7 +67,7 @@ const StandOffers = () => {
                         </button>
                     </motion.div>
                     <motion.div
-                        className="flex w-full flex-col rounded-lg bg-secondary p-6 shadow-lg md:w-[500px]"
+                        className="flex w-full flex-col rounded-lg bg-secondary p-3.5 shadow-lg md:w-[500px] md:p-6"
                         variants={item}
                     >
                         <div className="mb-4 flex items-center justify-center">

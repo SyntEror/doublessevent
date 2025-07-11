@@ -1,7 +1,7 @@
 import Divider from '@/components/reusable/Divider'
 import Image from 'next/image'
 import { CiFacebook, CiLocationOn, CiMail, CiPhone } from 'react-icons/ci'
-import { FaInstagram, FaLinkedin } from 'react-icons/fa'
+import { FaInstagram } from 'react-icons/fa'
 
 export const Footer = () => {
     return (
@@ -19,37 +19,58 @@ export const Footer = () => {
                         L’art de sublimer vos événements
                     </div>
                     <div className="flex items-center justify-center gap-2">
-                        <CiFacebook />
-                        <FaInstagram />
-                        <FaLinkedin />
+                        <a
+                            href="https://www.facebook.com/sonia.bentelharmassi"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <CiFacebook className="h-8 w-8" />
+                        </a>
+                        <a
+                            href="https://www.instagram.com/doubless.event/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <FaInstagram className="h-8 w-8" />
+                        </a>
                     </div>
                 </div>
                 <div className="flex flex-col items-center justify-center gap-8 text-gray-400 md:flex-row">
                     <a href={'#services'}>Services</a>
-                    <a href={'#pricing'}>Galerie</a>
-                    <a href={'#temoignages'}>Temoignages</a>
-                    <a href={'#reserver'}>Reserver/demander un devis</a>
+                    <a href={'#quisommenous'}>Qui sommes nous</a>
+                    {/*<a href={'#temoignages'}>Témoignages</a>*/}
+                    <a href={'#reserver'}>Réserver ou Demander un Devis</a>
+                    <a href={'#stands'}>Nos offre de stands</a>
                 </div>
                 <div className="flex">
                     <div className="flex flex-col gap-2 pr-4 text-xs text-gray-400">
                         <div className="flex gap-2">
                             <CiMail className="h-6 w-10" />
-                            <div className="flex items-center">
+                            <a
+                                href="mailto:info@doublessevent.com"
+                                className="flex items-center"
+                            >
                                 info@doublessevent.com
-                            </div>
+                            </a>
                         </div>
                         <div className="flex gap-2">
                             <CiPhone className="h-6 w-10" />
-                            <div className="flex items-center">
+                            <a
+                                href="tel:+393508407378"
+                                className="flex items-center"
+                            >
                                 +39 350 840 7378
-                            </div>
+                            </a>
                         </div>
                         <div className="flex gap-2">
                             <CiLocationOn className="h-6 w-10" />
-                            <div className="flex items-center">
-                                {' '}
-                                Via Leonardo Da Vinci (VA){' '}
-                            </div>
+
+                            <a
+                                className="flex items-center"
+                                href={'#localisation'}
+                            >
+                                Via Leonardo Da Vinci (VA)
+                            </a>
                         </div>
                     </div>
                 </div>
