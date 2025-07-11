@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "DoubleSS event - L'art de sublimer vos événements",
     description:
         "DoubleSS event est une entreprise spécialisée dans l'organisation d'événements uniques et mémorables. Notre équipe passionnée s'engage à transformer vos idées en réalité, en créant des expériences sur mesure qui laissent une empreinte indélébile.",
-    icons: [{ rel: 'icon', url: '/logo.png' }],
+    icons: [{ rel: 'icon', url: 'https://www.doublessevent.com/logo.png' }],
     openGraph: {
         title: "DoubleSS event - L'art de sublimer vos événements",
         description:
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
         title: "DoubleSS event - L'art de sublimer vos événements",
         description:
             "DoubleSS event est une entreprise spécialisée dans l'organisation d'événements uniques et mémorables. Notre équipe passionnée s'engage à transformer vos idées en réalité, en créant des expériences sur mesure qui laissent une empreinte indélébile.",
-        images: ['/logo.png'],
+        images: ['https://www.doublessevent.com/logo.png'],
     },
 }
 
