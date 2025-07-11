@@ -12,7 +12,7 @@ export default {
                 '-10': '-10',
             },
             colors: {
-                primary: '#FFD700', // Gold
+                primary: '#EE424B', // Red
                 secondary: '#F5E6E8', // Powder Pink
                 dark: '#1F1F1F', // Black
             },

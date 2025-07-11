@@ -79,7 +79,7 @@ const StandOffers = () => {
                                 className="mb-4 items-center rounded-md object-cover"
                             />
                         </div>
-                        <h3 className="mb-2 text-xl font-semibold text-[#C29E59]">
+                        <h3 className="mb-2 text-xl font-semibold text-primary">
                             STAND VIP – 4×4 m
                         </h3>
                         <p className="mb-4 text-gray-700">
@@ -94,7 +94,7 @@ const StandOffers = () => {
                             <li>Transport hôtel-salon offert</li>
                             <li>Option écran : +500 €</li>
                         </ul>
-                        <button className="mt-auto rounded bg-[#C29E59] px-4 py-2 text-white transition hover:bg-[#a58347]">
+                        <button className="mt-auto rounded bg-primary px-4 py-2 text-white transition hover:bg-primary/80">
                             Réserver ce stand
                         </button>
                     </motion.div>

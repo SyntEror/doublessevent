@@ -12,7 +12,7 @@ export default function Home() {
         headline: "DoubleSS Event - L'art de sublimer vos événements",
         name: 'DoubleSS Event',
         url: 'https://doublessevent.com',
-        logo: 'https://doublessevent.com/logo.jpg',
+        logo: 'https://doublessevent.com/logo.png',
         sameAs: [
             'https://www.facebook.com/doublessevent',
             'https://www.instagram.com/doublessevent',
@@ -41,7 +41,7 @@ export default function Home() {
                 />
                 <meta
                     property="og:image"
-                    content="https://doublessevent.com/logo.jpg"
+                    content="https://doublessevent.com/logo.png"
                 />
                 <script
                     type="application/ld+json"

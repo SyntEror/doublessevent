@@ -9,7 +9,7 @@ export const Footer = () => {
             <div className="flex w-full flex-col items-center justify-between gap-y-10 md:flex-row md:items-start md:gap-y-0">
                 <div className="flex-col space-y-2">
                     <Image
-                        src="/logo.jpg"
+                        src="/logo.png"
                         alt="DoubleSS Logo"
                         width={3320}
                         height={1000}

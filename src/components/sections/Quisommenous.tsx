@@ -39,12 +39,12 @@ const Quisommenous = () => {
                         className="relative w-full md:w-1/2 lg:w-2/5"
                     >
                         <Image
-                            src="/logo.jpg"
+                            src="/logo.png"
                             alt="DoubleSS Event Logo"
                             width={3320}
                             height={1000}
                             sizes="(max-width: 768px) 100vw, 50vw"
-                            className="w-full rounded-lg object-cover shadow-lg"
+                            className="w-full object-cover"
                             priority
                         />
                     </motion.div>

@@ -19,7 +19,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <head>
-                <link rel="icon" href="/logo.jpg" />
+                <link rel="icon" href="/logo.png" />
             </head>
             <body className="relative overflow-x-hidden">
                 <Navbar />

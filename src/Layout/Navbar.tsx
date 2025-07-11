@@ -10,16 +10,16 @@ const Navbar: FC = () => {
     return (
         <m.nav
             className={
-                `bg-galaxy-100/60 fixed z-50 flex w-full items-center justify-between overflow-x-hidden px-8 py-4 backdrop-blur transition-all duration-300 ease-in-out` +
+                `bg-galaxy-100/60 fixed z-50 flex w-full items-center justify-between overflow-x-hidden px-8 py-1 backdrop-blur transition-all duration-300 ease-in-out` +
                 ` ${scrollDirection === 'down' ? '-top-24' : 'top-0'}`
             }
         >
             <Image
-                src="/logo.jpg"
+                src="/logo.png"
                 alt="DoubleSS Logo"
                 width={3320}
                 height={1000}
-                className="w-14 md:w-12"
+                className="w-16 md:w-20"
             />
             <div className="hidden gap-8 md:flex">
                 <a href={'#services'}>Services</a>
