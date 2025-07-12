@@ -52,7 +52,7 @@ export default function RootLayout({
                 </title>
                 <link rel="icon" href="/logo.png" />
             </head>
-            <body className="relative overflow-x-hidden">
+            <body className="relative overflow-x-hidden bg-[#1f1f1f]">
                 <Navbar />
                 <ClientProviders>{children}</ClientProviders>
                 <Footer />

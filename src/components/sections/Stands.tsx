@@ -22,7 +22,7 @@ const StandOffers = () => {
     }
 
     return (
-        <section id="stands" className="px-1 py-12 md:px-6">
+        <section id="stands" className="px-1 py-12 md:px-6 scroll-mt-24">
             <motion.div
                 className="mx-auto max-w-7xl sm:px-6 lg:px-8"
                 initial="hidden"

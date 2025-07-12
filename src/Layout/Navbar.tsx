@@ -10,7 +10,7 @@ const Navbar: FC = () => {
     return (
         <m.nav
             className={
-                `bg-galaxy-100/60 fixed z-50 flex w-full items-center justify-between overflow-x-hidden px-8 py-1 backdrop-blur transition-all duration-300 ease-in-out` +
+                `bg-galaxy-100/20 fixed z-50 flex w-full items-center justify-between overflow-x-hidden px-8 py-1 backdrop-blur transition-all duration-300 ease-in-out` +
                 ` ${scrollDirection === 'down' ? '-top-24' : 'top-0'}`
             }
         >

@@ -13,7 +13,7 @@ const cardVariants: Variants = {
 }
 
 const Services = () => (
-    <section className="py-16" id="services" aria-labelledby="services-heading">
+    <section className="py-16 scroll-mt-24" id="services" aria-labelledby="services-heading">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <motion.h2
                 id="services-heading"

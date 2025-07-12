@@ -15,6 +15,7 @@ export default {
                 primary: '#EE424B', // Red
                 secondary: '#F5E6E8', // Powder Pink
                 dark: '#1F1F1F', // Black
+                galaxy: { 50: '#1b1e2b', 100: '#11131d' },
             },
             fontFamily: {
                 playfair: ['Playfair Display', 'serif'],
