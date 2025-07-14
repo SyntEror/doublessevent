@@ -9,24 +9,32 @@
         "lint": "next lint",
         "prettier-check": "prettier --check .",
         "prettier-write": "prettier --write .",
-        "postbuild": "next-sitemap"
+        "postbuild": "next-sitemap",
+        "sync-catalogue": "ts-node-esm --transpile-only src/script/add-stripe-catalogue.ts"
+
     },
     "dependencies": {
+        "@stripe/react-stripe-js": "^3.7.0",
+        "@stripe/stripe-js": "^7.4.0",
         "@t3-oss/env-nextjs": "^0.13.8",
         "autoprefixer": "^10.4.21",
+        "dotenv": "^17.2.0",
         "framer-motion": "^12.16.0",
         "lucide-react": "^0.525.0",
         "next": "15.3.3",
         "next-sitemap": "^4.2.3",
+        "nodemailer": "^7.0.5",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
         "react-icons": "^5.5.0",
         "react-scroll-parallax": "^3.4.5",
+        "stripe": "^18.3.0",
         "zod": "^4.0.5"
     },
     "devDependencies": {
         "@eslint/eslintrc": "^3",
-        "@types/node": "^20",
+        "@types/node": "^20.19.1",
+        "@types/nodemailer": "^6.4.17",
         "@types/react": "^19",
         "@types/react-dom": "^19",
         "eslint": "^9",
@@ -37,7 +45,8 @@
         "prettier-plugin-tailwindcss": "^0.6.12",
         "tailwind-scrollbar": "^4.0.2",
         "tailwindcss": "^3.3.5",
-        "typescript": "^5"
+        "ts-node": "^10.9.2",
+        "typescript": "^5.8.3"
     },
     "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0"
 }
