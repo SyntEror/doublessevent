@@ -5,11 +5,11 @@ import Stripe from 'stripe'
 import { z } from 'zod'
 
 const config = configData as PaymentConfig
-
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
     apiVersion: '2025-06-30.basil',
 })
 
+// ---------- request schema ----------
 const Body = z.object({
     plan: z.enum(['standard', 'vip']),
     includeScreen: z.boolean(),
@@ -18,77 +18,67 @@ const Body = z.object({
         email: z.string().email(),
         phone: z.string().optional(),
     }),
-    payInFull: z.boolean(),
-    customAmount: z.number().positive().optional(), // used when payInFull === false
+    // “full” = 100 %, “2x” = 50 % + 50 %, “3x” = 34 % + 33 % + 33 %
+    installments: z.enum(['full', '2x', '3x']),
 })
 
 export async function POST(req: NextRequest) {
-    const body = await req.json()
-    const data = Body.parse(body)
+    const data = Body.parse(await req.json())
 
-    if (!data.payInFull && (!data.customAmount || data.customAmount <= 0)) {
-        return NextResponse.json(
-            { error: 'Custom amount must be greater than 0' },
-            { status: 400 },
-        )
-    }
-
-    // Lookup price IDs from config
-
+    // -------- plan lookup / totals --------
     const planInfo = config.plans.find(p => p.id === data.plan)
-    if (!planInfo) {
+    if (!planInfo)
         return NextResponse.json({ error: 'Plan not found' }, { status: 400 })
-    }
-    const addonInfo = config.addon
 
-    let total = planInfo.amount
-    if (data.includeScreen) total += addonInfo.amount
+    const total =
+        planInfo.amount + (data.includeScreen ? config.addon.amount : 0)
 
-    const amount = data.payInFull ? total : Math.round(data.customAmount! * 100)
-
-    // Deadline enforcement (client can choose any split, but must pay before deadline)
+    // -------- deadline guard --------
     const deadline = new Date(config.deadline + 'T23:59:59Z') // UTC
-    const now = new Date()
-    if (now > deadline) {
+    if (new Date() > deadline) {
         return NextResponse.json(
             { error: 'Payment deadline has passed' },
             { status: 400 },
         )
     }
 
-    // Create or reuse customer by email
-    const customers = await stripe.customers.list({
-        email: data.payer.email,
-        limit: 1,
-    })
-    const customer = customers.data[0] // First customer or undefined
+    // -------- create / reuse customer --------
+    const [customer] = (
+        await stripe.customers.list({ email: data.payer.email, limit: 1 })
+    ).data
     const customerId =
-        customer?.id ||
+        customer?.id ??
         (
             await stripe.customers.create({
                 name: data.payer.name,
                 email: data.payer.email,
                 phone: data.payer.phone,
-                metadata: {
-                    plan: data.plan,
-                    includeScreen: String(data.includeScreen),
-                    deadline: config.deadline,
-                    total_due_cents: total,
-                },
+                metadata: { plan: data.plan },
             })
         ).id
 
+    // -------- instalment maths --------
+    const splits = {
+        full: [1],
+        '2x': [0.5, 0.5],
+        '3x': [0.34, 0.33, 0.33],
+    }[data.installments]
+
+    const firstAmount = Math.round(total * splits[0]) // cents
+
+    // -------- first PaymentIntent --------
     const intent = await stripe.paymentIntents.create({
-        amount,
+        amount: firstAmount,
         currency: 'eur',
         customer: customerId,
-        capture_method: 'automatic',
-        payment_method_types: ['card', 'paypal', 'klarna'], // enable everything in Dashboard first
+        automatic_payment_methods: { enabled: true },
+        setup_future_usage:
+            data.installments === 'full' ? undefined : 'off_session',
         metadata: {
             plan: data.plan,
             includeScreen: data.includeScreen ? 'yes' : 'no',
             total_due_cents: total,
-            pay_in_full: data.payInFull ? 'yes' : 'no',
+            schedule_json: JSON.stringify(splits.slice(1)), // remaining %
         },
         receipt_email: data.payer.email,
     })
