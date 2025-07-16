@@ -14,11 +14,21 @@ export default function CheckoutForm({ plan, close }: Props) {
 
     // user inputs
     const [includeScreen, setIncludeScreen] = useState(false)
-    const [payInFull, setPayInFull] = useState(true)
-    const [customAmount, setCustomAmount] = useState(0)
     const [email, setEmail] = useState('')
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
+
+    // Pricing for each plan
+    const standardPrice = 2000 // Example: price for standard plan in EUR
+    const vipPrice = 3000 // Example: price for vip plan in EUR
+    const screenPrice = 500 // Price for screen option in EUR
+
+    // Calculate total price
+    const calculateTotalAmount = () => {
+        let totalAmount = plan === 'standard' ? standardPrice : vipPrice
+        if (includeScreen) totalAmount += screenPrice
+        return totalAmount
+    }
 
     // first screen: collect details
     const handleNext = async (e: React.FormEvent) => {
@@ -33,8 +43,6 @@ export default function CheckoutForm({ plan, close }: Props) {
                 body: JSON.stringify({
                     plan,
                     includeScreen,
-                    payInFull,
-                    ...(payInFull ? {} : { customAmount }),
                     payer: { name, email, phone },
                 }),
             })
@@ -57,6 +65,7 @@ export default function CheckoutForm({ plan, close }: Props) {
             <PaymentStep
                 clientSecret={clientSecret}
                 onBack={() => setStep(0)}
+                totalAmount={calculateTotalAmount()}
             />
         )
     }
@@ -112,37 +121,9 @@ export default function CheckoutForm({ plan, close }: Props) {
                 <label htmlFor="screen">Ajouter “écran” (+ €500)</label>
             </div>
 
-            <div className="space-y-1 text-black">
-                <label className="flex items-center">
-                    <input
-                        type="radio"
-                        checked={payInFull}
-                        onChange={() => setPayInFull(true)}
-                        className="mr-2"
-                    />
-                    Payer en une fois
-                </label>
-                <label className="flex items-center">
-                    <input
-                        type="radio"
-                        checked={!payInFull}
-                        onChange={() => setPayInFull(false)}
-                        className="mr-2"
-                    />
-                    Payer en plusieurs fois
-                </label>
-                {!payInFull && (
-                    <input
-                        type="number"
-                        className="w-full rounded border p-2"
-                        placeholder="Amount to pay this time (EUR)"
-                        value={customAmount}
-                        onChange={e => setCustomAmount(Number(e.target.value))}
-                        min={1}
-                        step={0.01}
-                        required
-                    />
-                )}
+            {/* Display total amount */}
+            <div className="font-semibold text-black">
+                <p>Total à payer: €{calculateTotalAmount()}</p>
             </div>
 
             <div className="flex gap-2">

@@ -1,7 +1,13 @@
 import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import React, { useState } from 'react'
 
-export default function PaymentForm({ onBack }: { onBack: () => void }) {
+export default function PaymentForm({
+    onBack,
+    totalAmount, // Accept totalAmount as a prop
+}: {
+    onBack: () => void
+    totalAmount: number // Accept totalAmount as a prop
+}) {
     const stripe = useStripe()
     const elements = useElements()
     const [message, setMessage] = useState('')
@@ -22,6 +28,11 @@ export default function PaymentForm({ onBack }: { onBack: () => void }) {
             onSubmit={handlePay}
             className="mx-auto max-w-lg space-y-4 rounded bg-white p-6 shadow"
         >
+            {/* Display the total amount in the payment step */}
+            <div className="font-semibold text-black">
+                <p>Total à payer: €{totalAmount}</p>
+            </div>
+
             <PaymentElement />
 
             <div className="flex gap-2">

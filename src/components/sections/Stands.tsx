@@ -1,12 +1,15 @@
-'use client';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import { useState } from 'react';
-import CheckoutForm from '@/components/reusable/CheckoutForm';
+'use client'
+import CheckoutForm from '@/components/reusable/CheckoutForm'
+import { motion } from 'framer-motion'
+import Image from 'next/image'
+import { useState } from 'react'
 
 const StandOffers = () => {
-    const [showModal, setShowModal] = useState(false);
-    const [type, setType] = useState<'standard' | 'vip'>('standard');
+    const [showModal, setShowModal] = useState(false)
+    const [type, setType] = useState<'standard' | 'vip'>('standard')
+    const [paymentStatus, setPaymentStatus] = useState<
+        'success' | 'failure' | null
+    >(null)
 
     const container = {
         hidden: { opacity: 0, y: 30 },
@@ -15,27 +18,27 @@ const StandOffers = () => {
             y: 0,
             transition: { delayChildren: 0.2, staggerChildren: 0.2 },
         },
-    };
+    }
 
     const item = {
         hidden: { opacity: 0, y: 20 },
         show: { opacity: 1, y: 0 },
-    };
+    }
 
-    /* simple modal wrapper */
     const Modal = ({ children }: { children: React.ReactNode }) => (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-            <div className="bg-white rounded shadow-lg max-w-full">
+            <div className="max-w-full rounded bg-white shadow-lg">
                 {children}
             </div>
         </div>
-    );
+    )
+
+    const handlePaymentResult = (success: boolean) => {
+        setPaymentStatus(success ? 'success' : 'failure')
+    }
 
     return (
-        <section
-            id="stands"
-            className="px-1 py-12 md:px-6 scroll-mt-24"
-        >
+        <section id="stands" className="scroll-mt-24 px-1 py-12 md:px-6">
             <motion.div
                 className="mx-auto max-w-7xl sm:px-6 lg:px-8"
                 initial="hidden"
@@ -79,8 +82,8 @@ const StandOffers = () => {
                         <button
                             className="mt-auto rounded bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700"
                             onClick={() => {
-                                setType('standard');
-                                setShowModal(true);
+                                setType('standard')
+                                setShowModal(true)
                             }}
                         >
                             Réserver ce stand
@@ -118,8 +121,8 @@ const StandOffers = () => {
                         </ul>
                         <button
                             onClick={() => {
-                                setType('vip');
-                                setShowModal(true);
+                                setType('vip')
+                                setShowModal(true)
                             }}
                             className="mt-auto rounded bg-primary px-4 py-2 text-white transition hover:bg-primary/80"
                         >
@@ -131,14 +134,48 @@ const StandOffers = () => {
 
             {showModal && (
                 <Modal>
-                    <CheckoutForm
-                        plan={type}
-                        close={() => setShowModal(false)}
-                    />
+                    {paymentStatus === null ? (
+                        <CheckoutForm
+                            plan={type}
+                            close={() => setShowModal(false)}
+                            onPaymentResult={handlePaymentResult}
+                        />
+                    ) : paymentStatus === 'success' ? (
+                        <div className="p-6 text-center">
+                            <h2 className="text-2xl font-semibold text-green-600">
+                                Paiement réussi !
+                            </h2>
+                            <p className="mt-4 text-lg text-gray-700">
+                                Votre réservation a été confirmée.
+                            </p>
+                            <button
+                                onClick={() => setShowModal(false)}
+                                className="mt-6 rounded bg-blue-600 px-4 py-2 text-white"
+                            >
+                                Fermer
+                            </button>
+                        </div>
+                    ) : (
+                        <div className="p-6 text-center">
+                            <h2 className="text-2xl font-semibold text-red-600">
+                                Échec du paiement
+                            </h2>
+                            <p className="mt-4 text-lg text-gray-700">
+                                Il y a eu un problème avec votre paiement.
+                                Veuillez réessayer.
+                            </p>
+                            <button
+                                onClick={() => setShowModal(false)}
+                                className="mt-6 rounded bg-blue-600 px-4 py-2 text-white"
+                            >
+                                Fermer
+                            </button>
+                        </div>
+                    )}
                 </Modal>
             )}
         </section>
-    );
-};
+    )
+}
 
-export default StandOffers;
+export default StandOffers

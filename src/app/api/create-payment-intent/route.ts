@@ -18,20 +18,11 @@ const Body = z.object({
         email: z.string().email(),
         phone: z.string().optional(),
     }),
-    payInFull: z.boolean(),
-    customAmount: z.number().positive().optional(), // used when payInFull === false
 })
 
 export async function POST(req: NextRequest) {
     const body = await req.json()
     const data = Body.parse(body)
-
-    if (!data.payInFull && (!data.customAmount || data.customAmount <= 0)) {
-        return NextResponse.json(
-            { error: 'Custom amount must be greater than 0' },
-            { status: 400 },
-        )
-    }
 
     // Lookup price IDs from config
 
@@ -43,8 +34,6 @@ export async function POST(req: NextRequest) {
 
     let total = planInfo.amount
     if (data.includeScreen) total += addonInfo.amount
-
-    const amount = data.payInFull ? total : Math.round(data.customAmount! * 100)
 
     // Deadline enforcement (client can choose any split, but must pay before deadline)
     const deadline = new Date(config.deadline + 'T23:59:59Z') // UTC
@@ -79,7 +68,7 @@ export async function POST(req: NextRequest) {
         ).id
 
     const intent = await stripe.paymentIntents.create({
-        amount,
+        amount: total,
         currency: 'eur',
         customer: customerId,
         capture_method: 'automatic',
@@ -88,7 +77,6 @@ export async function POST(req: NextRequest) {
             plan: data.plan,
             includeScreen: data.includeScreen ? 'yes' : 'no',
             total_due_cents: total,
-            pay_in_full: data.payInFull ? 'yes' : 'no',
         },
         receipt_email: data.payer.email,
     })
