@@ -7,9 +7,6 @@ import { useState } from 'react'
 const StandOffers = () => {
     const [showModal, setShowModal] = useState(false)
     const [type, setType] = useState<'standard' | 'vip'>('standard')
-    const [paymentStatus, setPaymentStatus] = useState<
-        'success' | 'failure' | null
-    >(null)
 
     const container = {
         hidden: { opacity: 0, y: 30 },
@@ -25,6 +22,7 @@ const StandOffers = () => {
         show: { opacity: 1, y: 0 },
     }
 
+    /* simple modal wrapper */
     const Modal = ({ children }: { children: React.ReactNode }) => (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
             <div className="max-w-full rounded bg-white shadow-lg">
@@ -32,10 +30,6 @@ const StandOffers = () => {
             </div>
         </div>
     )
-
-    const handlePaymentResult = (success: boolean) => {
-        setPaymentStatus(success ? 'success' : 'failure')
-    }
 
     return (
         <section id="stands" className="scroll-mt-24 px-1 py-12 md:px-6">
@@ -134,44 +128,10 @@ const StandOffers = () => {
 
             {showModal && (
                 <Modal>
-                    {paymentStatus === null ? (
-                        <CheckoutForm
-                            plan={type}
-                            close={() => setShowModal(false)}
-                            onPaymentResult={handlePaymentResult}
-                        />
-                    ) : paymentStatus === 'success' ? (
-                        <div className="p-6 text-center">
-                            <h2 className="text-2xl font-semibold text-green-600">
-                                Paiement réussi !
-                            </h2>
-                            <p className="mt-4 text-lg text-gray-700">
-                                Votre réservation a été confirmée.
-                            </p>
-                            <button
-                                onClick={() => setShowModal(false)}
-                                className="mt-6 rounded bg-blue-600 px-4 py-2 text-white"
-                            >
-                                Fermer
-                            </button>
-                        </div>
-                    ) : (
-                        <div className="p-6 text-center">
-                            <h2 className="text-2xl font-semibold text-red-600">
-                                Échec du paiement
-                            </h2>
-                            <p className="mt-4 text-lg text-gray-700">
-                                Il y a eu un problème avec votre paiement.
-                                Veuillez réessayer.
-                            </p>
-                            <button
-                                onClick={() => setShowModal(false)}
-                                className="mt-6 rounded bg-blue-600 px-4 py-2 text-white"
-                            >
-                                Fermer
-                            </button>
-                        </div>
-                    )}
+                    <CheckoutForm
+                        plan={type}
+                        close={() => setShowModal(false)}
+                    />
                 </Modal>
             )}
         </section>
