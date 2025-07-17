@@ -64,6 +64,8 @@ export async function POST(req: NextRequest) {
                     includeScreen: String(data.includeScreen),
                     deadline: config.deadline,
                     total_due_cents: total,
+                    name: data.payer.name,
+                    phone: data.payer.phone || '',
                 },
             })
         ).id
