@@ -88,6 +88,7 @@ export default function CheckoutForm({ plan, close }: Props) {
                 <span>Nom et Prénom</span>
                 <input
                     className="mt-1 w-full rounded border p-2"
+                    placeholder="Ex: Sonia H. R."
                     value={name}
                     onChange={e => setName(e.target.value)}
                     required
@@ -99,6 +100,7 @@ export default function CheckoutForm({ plan, close }: Props) {
                 <input
                     type="email"
                     className="mt-1 w-full rounded border p-2"
+                    placeholder="Ex: Sony@gmail.com"
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                     required
@@ -108,17 +110,24 @@ export default function CheckoutForm({ plan, close }: Props) {
             <div className="block text-black">
                 <span>Téléphone</span>
                 <div className="mt-1 flex">
+                    <div className="flex items-center rounded-l border border-r-0 bg-gray-100 px-2 text-black">
+                        +
+                    </div>
                     <input
-                        type="text"
-                        placeholder="+33"
-                        className="w-1/6 rounded-l border border-r-0 p-2"
+                        type="tel"
+                        pattern="[0-9]*"
+                        placeholder="33"
+                        className="w-1/6 border-b border-r border-t p-2"
                         value={countryCode}
-                        onChange={e => setCountryCode(e.target.value)}
+                        onChange={e =>
+                            setCountryCode(e.target.value.replace(/\D/g, ''))
+                        } // only digits
                         required
                     />
                     <input
                         type="tel"
                         className="w-full rounded-r border p-2"
+                        placeholder="Ex : 1234567890"
                         value={phone}
                         onChange={e => setPhone(e.target.value)}
                         required
