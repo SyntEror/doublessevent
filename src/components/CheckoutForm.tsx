@@ -1,5 +1,5 @@
 'use client'
-import PaymentStep from '@/components/reusable/PaymentStep'
+import PaymentStep from '@/components/PaymentStep'
 import React, { useState } from 'react'
 
 // ---------- whole two-step form ----------

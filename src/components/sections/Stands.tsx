@@ -1,5 +1,5 @@
 'use client'
-import CheckoutForm from '@/components/reusable/CheckoutForm'
+import CheckoutForm from '@/components/CheckoutForm'
 import Modal from '@/components/reusable/Modal'
 import { motion } from 'framer-motion'
 import Image from 'next/image'

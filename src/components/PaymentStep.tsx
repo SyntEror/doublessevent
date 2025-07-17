@@ -1,4 +1,4 @@
-import StripeProvider from '../../lib/StripeProvider'
+import StripeProvider from '../lib/StripeProvider'
 import PaymentForm from './PaymentForm'
 
 export default function PaymentStep({
