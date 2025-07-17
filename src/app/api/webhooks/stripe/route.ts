@@ -1,6 +1,8 @@
 import { env } from '@/env'
+import fs from 'fs'
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
+import path from 'path'
 import Stripe from 'stripe'
 
 const stripe = new Stripe(env.STRIPE_SECRET_KEY!, {
@@ -25,7 +27,7 @@ export async function POST(req: NextRequest) {
             env.STRIPE_WEBHOOK_SECRET,
         )
     } catch (err) {
-        console.log(err)
+        console.error('[WEBHOOK] Signature verification failed:', err)
         return NextResponse.json(
             { error: 'Webhook signature failed' },
             { status: 400 },
@@ -34,26 +36,42 @@ export async function POST(req: NextRequest) {
 
     if (event.type === 'payment_intent.succeeded') {
         const intent = event.data.object as Stripe.PaymentIntent
-        const line = `
-      New payment:
-        Email: ${intent.receipt_email}
-        Plan: ${intent.metadata.plan}
-        Screen add-on: ${intent.metadata.includeScreen}
-        Paid in full: ${intent.metadata.pay_in_full}
-        Amount: $${(intent.amount_received / 100).toFixed(2)}
-    `
+
+        // Load your HTML email template
+        const templatePath = path.join(
+            process.cwd(),
+            'src/emails/internal-payment-notification.html',
+        )
+        const template = fs.readFileSync(templatePath, 'utf8')
+
+        const filledHtml = template
+            .replace('{{name}}', intent.metadata.name || '-')
+            .replace('{{email}}', intent.receipt_email || '-')
+            .replace('{{phone}}', intent.metadata.phone || '-')
+            .replace('{{plan}}', intent.metadata.plan || '-')
+            .replace(
+                '{{includeScreen}}',
+                intent.metadata.includeScreen === 'yes' ? 'Oui' : 'Non',
+            )
+            .replace('{{amount}}', (intent.amount_received / 100).toFixed(2))
+            .replace('{{date}}', new Date().toLocaleString('fr-FR'))
+            .replace(
+                '{{stripeLink}}',
+                `https://dashboard.stripe.com/payments/${intent.id}`,
+            )
 
         try {
             await transporter.sendMail({
-                to: [intent.receipt_email!, env.INTERNAL_EMAIL],
-                from: env.INTERNAL_EMAIL!,
-                subject: 'Payment received',
-                text: line,
+                to: env.INTERNAL_EMAIL,
+                from: env.SMTP_FROM_ADDRESS,
+                subject: `💰 Nouveau Paiement – ${intent.metadata.plan}`,
+                html: filledHtml,
             })
-            console.log('[WEBHOOK] Email sent (or attempted)')
+            console.log('[WEBHOOK] Internal notification email sent ✅')
         } catch (e) {
-            console.error('Error sending email:', e)
+            console.error('[WEBHOOK] Failed to send email:', e)
         }
     }
+
     return NextResponse.json({ received: true })
 }

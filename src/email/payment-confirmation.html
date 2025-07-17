@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <style>
+        body {
+            font-family: Inter, sans-serif;
+            background: #f5e6e8;
+            color: #1f1f1f;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .header {
+            background-color: #11131d; /* galaxy-100 */
+            padding: 24px;
+            text-align: center;
+        }
+
+        .header img {
+            max-width: 120px;
+            margin-bottom: 8px;
+        }
+
+        .slogan {
+            font-size: 14px;
+            color: #f5e6e8;
+            font-style: italic;
+        }
+
+        .content {
+            padding: 24px;
+        }
+
+        .content h2 {
+            color: #ee424b;
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .field {
+            margin-bottom: 10px;
+        }
+
+        .label {
+            font-weight: 600;
+            color: #11131d;
+        }
+
+        .footer {
+            background: #f5e6e8;
+            padding: 16px;
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Logo & Slogan -->
+    <div class="header">
+        <img
+                src="https://doublessevent.com/logo.png"
+                alt="DoubleSS Logo"
+        />
+        <div class="slogan">L’art de sublimer vos événements</div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content flex flex-col gap-2">
+        <h2>✅ Nouveau paiement reçu</h2>
+
+        <div class="field"><span class="label">Nom :</span> {{name}}</div>
+        <div class="field"><span class="label">Email :</span> {{email}}</div>
+        <div class="field"><span class="label">Téléphone :</span> {{phone}}</div>
+        <div class="field"><span class="label">Plan :</span> {{plan}}</div>
+        <div class="field"><span class="label">Option écran :</span> {{includeScreen}}</div>
+        <div class="field"><span class="label">Montant payé :</span> {{amount}} €</div>
+        <div class="field">
+            <span class="label">Voir dans Stripe :</span>
+            <a href="{{stripeLink}}" target="_blank">Ouvrir la transaction</a>
+        </div>
+        <div class="field"><span class="label">Date :</span> {{date}}</div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        Email automatique – Merci de ne pas répondre directement à ce message.
+    </div>
+</div>
+</body>
+</html>
