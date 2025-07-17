@@ -71,7 +71,7 @@ export async function POST(req: NextRequest) {
         ).id
 
     const intent = await stripe.paymentIntents.create({
-        amount: 300,
+        amount: total,
         currency: 'eur',
         customer: customerId,
         capture_method: 'automatic',
