@@ -22,7 +22,10 @@ const Quisommenous = () => {
         },
     }
     return (
-        <section className="py-12 sm:py-16 lg:py-20 scroll-mt-24" id="quisommenous">
+        <section
+            className="scroll-mt-16 py-12 sm:py-16 lg:py-20"
+            id="quisommenous"
+        >
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <h1 className="mb-10 text-center text-3xl font-bold text-secondary sm:text-4xl md:text-5xl lg:text-6xl">
                     🤔 Qui sommes-nous ?
@@ -50,7 +53,7 @@ const Quisommenous = () => {
                     </motion.div>
                     <motion.div
                         variants={itemVariants}
-                        className="flex w-full text-white items-center justify-center text-center text-xl font-medium leading-relaxed sm:text-2xl md:w-1/2 md:text-left lg:w-3/5 lg:text-3xl"
+                        className="flex w-full items-center justify-center text-center text-xl font-medium leading-relaxed text-white sm:text-2xl md:w-1/2 md:text-left lg:w-3/5 lg:text-3xl"
                     >
                         DoubleSS Event est une entreprise spécialisée dans
                         l&#39;organisation d&#39;événements uniques et

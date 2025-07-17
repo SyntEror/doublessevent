@@ -4,13 +4,13 @@
     {
       "id": "standard",
       "name": "Standard",
-      "amount": 200000,
+      "amount": 209900,
       "priceId": "price_1Rk9kXCKaulgjUFIYEFHQVCc"
     },
     {
       "id": "vip",
       "name": "VIP",
-      "amount": 300000,
+      "amount": 309900,
       "priceId": "price_1Rk9kYCKaulgjUFIrbxapZ4e"
     }
   ],

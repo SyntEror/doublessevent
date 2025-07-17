@@ -12,8 +12,10 @@ const stripe = new Stripe(env.STRIPE_SECRET_KEY!, {
 const transporter = nodemailer.createTransport({
     host: env.SMTP_HOST,
     port: Number(env.SMTP_PORT),
-    secure: Number(env.SMTP_PORT) === 465,
+    secure: true,
     auth: { user: env.SMTP_USER, pass: env.SMTP_PASSWORD },
+    logger: true,
+    debug: true,
 })
 
 export async function POST(req: NextRequest) {
@@ -67,7 +69,7 @@ export async function POST(req: NextRequest) {
         try {
             await transporter.sendMail({
                 to: env.INTERNAL_EMAIL,
-                from: env.SMTP_FROM_ADDRESS,
+                from: env.SMTP_FROM_NAME,
                 subject: `💰 Nouveau Paiement – ${intent.metadata.plan}`,
                 html: filledHtml,
             })

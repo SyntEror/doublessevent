@@ -1,3 +1,4 @@
+'use client'
 import Divider from '@/components/reusable/Divider'
 import Image from 'next/image'
 import { CiFacebook, CiLocationOn, CiMail, CiPhone } from 'react-icons/ci'
@@ -5,16 +6,23 @@ import { FaInstagram } from 'react-icons/fa'
 
 export const Footer = () => {
     return (
-        <footer className="bg-galaxy-100/60 flex flex-col items-center gap-6 p-4 text-white backdrop-blur md:items-start">
+        <footer className="flex flex-col items-center gap-6 bg-galaxy-100/60 p-4 text-white backdrop-blur md:items-start">
             <div className="flex w-full flex-col items-center justify-between gap-y-10 md:flex-row md:items-start md:gap-y-0">
-                <div className="flex-col flex my-auto space-y-2">
-                    <Image
-                        src="/logo.png"
-                        alt="DoubleSS Logo"
-                        width={3320}
-                        height={1000}
-                        className="ml-16 w-20"
-                    />
+                <div className="my-auto flex flex-col space-y-2">
+                    <button
+                        onClick={() =>
+                            window.scrollTo({ top: 0, behavior: 'smooth' })
+                        }
+                        aria-label="Scroll to top"
+                    >
+                        <Image
+                            src="/logo.png"
+                            alt="DoubleSS Logo"
+                            width={3320}
+                            height={1000}
+                            className="ml-16 w-20"
+                        />
+                    </button>
                     <div className="pl-6 text-xs font-light text-gray-400">
                         L’art de sublimer vos événements
                     </div>
@@ -35,14 +43,34 @@ export const Footer = () => {
                         </a>
                     </div>
                 </div>
-                <div className="flex flex-col my-auto items-center justify-center gap-8 text-gray-400 md:flex-row">
-                    <a className="hover:underline underline-offset-2" href={'#services'}>Services</a>
-                    <a className="hover:underline underline-offset-2" href={'#quisommenous'}>Qui sommes nous</a>
+                <div className="my-auto flex flex-col items-center justify-center gap-8 text-gray-400 md:flex-row">
+                    <a
+                        className="underline-offset-2 hover:underline"
+                        href={'#services'}
+                    >
+                        Services
+                    </a>
+                    <a
+                        className="underline-offset-2 hover:underline"
+                        href={'#quisommenous'}
+                    >
+                        Qui sommes nous
+                    </a>
                     {/*<a href={'#temoignages'}>Témoignages</a>*/}
-                    <a className="hover:underline underline-offset-2" href={'#reserver'}>Réserver ou Demander un Devis</a>
-                    <a className="hover:underline underline-offset-2" href={'#stands'}>Nos offre de stands</a>
+                    <a
+                        className="underline-offset-2 hover:underline"
+                        href={'#reserver'}
+                    >
+                        Réserver ou Demander un Devis
+                    </a>
+                    <a
+                        className="underline-offset-2 hover:underline"
+                        href={'#stands'}
+                    >
+                        Nos offre de stands
+                    </a>
                 </div>
-                <div className="flex my-auto">
+                <div className="my-auto flex">
                     <div className="flex flex-col gap-2 pr-4 text-xs text-gray-400">
                         <div className="flex gap-2">
                             <CiMail className="h-6 w-10" />

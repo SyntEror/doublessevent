@@ -44,7 +44,7 @@ const StandOffers = () => {
     }, [paymentStatus])
 
     return (
-        <section id="stands" className="scroll-mt-24 px-1 py-12 md:px-6">
+        <section id="stands" className="scroll-mt-16 px-1 py-12 md:px-6">
             <motion.div
                 className="mx-auto max-w-7xl sm:px-6 lg:px-8"
                 initial="hidden"
@@ -79,11 +79,15 @@ const StandOffers = () => {
                         </p>
                         <ul className="mb-4 list-inside list-disc space-y-1 text-sm text-gray-600">
                             <li>Surface : 9 m² (3×3 m)</li>
-                            <li>Tarif tout inclus : 2 000 €</li>
+                            <li>
+                                Tarif tout inclus : <b>2 099 €</b>
+                            </li>
                             <li>Mobilier complet avec vitrine</li>
                             <li>Enseigne personnalisée incluse</li>
                             <li>Éclairage & électricité fournis</li>
-                            <li>Option écran : +500 €</li>
+                            <li>
+                                Option écran : <b>+500 €</b>
+                            </li>
                         </ul>
                         <button
                             className="mt-auto rounded bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700"
@@ -118,12 +122,16 @@ const StandOffers = () => {
                         </p>
                         <ul className="mb-4 list-inside list-disc space-y-1 text-sm text-gray-600">
                             <li>Espace premium 4×4 m</li>
-                            <li>Tarif tout inclus : 3 000 €</li>
+                            <li>
+                                Tarif tout inclus : <b>3 099 €</b>
+                            </li>
                             <li>Design moderne & raffiné</li>
                             <li>Mobilier, logo & enseignes personnalisés</li>
                             <li>Électricité & hébergement inclus</li>
                             <li>Transport hôtel-salon offert</li>
-                            <li>Option écran : +500 €</li>
+                            <li>
+                                Option écran : <b>+500 €</b>
+                            </li>
                         </ul>
                         <button
                             onClick={() => {

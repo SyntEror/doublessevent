@@ -11,7 +11,7 @@ export default function CheckoutForm({ plan, close }: Props) {
     const [clientSecret, setClientSecret] = useState<string | null>(null)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
-    const [countryCode, setCountryCode] = useState('+33') // default France
+    const [countryCode, setCountryCode] = useState('33')
 
     // user inputs
     const [includeScreen, setIncludeScreen] = useState(false)
@@ -20,9 +20,9 @@ export default function CheckoutForm({ plan, close }: Props) {
     const [phone, setPhone] = useState('')
 
     // Pricing for each plan
-    const standardPrice = 2000 // Example: price for standard plan in EUR
-    const vipPrice = 3000 // Example: price for vip plan in EUR
-    const screenPrice = 500 // Price for screen option in EUR
+    const standardPrice = 2099
+    const vipPrice = 3099
+    const screenPrice = 500
 
     // Calculate total price
     const calculateTotalAmount = () => {
@@ -44,7 +44,7 @@ export default function CheckoutForm({ plan, close }: Props) {
                 body: JSON.stringify({
                     plan,
                     includeScreen,
-                    payer: { name, email, phone: `${countryCode}${phone}` },
+                    payer: { name, email, phone: `+${countryCode}${phone}` },
                 }),
             })
             const { clientSecret, error } = await res.json()
@@ -121,7 +121,7 @@ export default function CheckoutForm({ plan, close }: Props) {
                         value={countryCode}
                         onChange={e =>
                             setCountryCode(e.target.value.replace(/\D/g, ''))
-                        } // only digits
+                        }
                         required
                     />
                     <input
