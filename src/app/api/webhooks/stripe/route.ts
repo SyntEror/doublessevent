@@ -36,6 +36,9 @@ export async function POST(req: NextRequest) {
 
     if (event.type === 'payment_intent.succeeded') {
         const intent = event.data.object as Stripe.PaymentIntent
+        const customer = (await stripe.customers.retrieve(
+            intent.customer as string,
+        )) as Stripe.Customer
 
         // Load your HTML emails template
         const templatePath = path.join(
@@ -45,9 +48,9 @@ export async function POST(req: NextRequest) {
         const template = fs.readFileSync(templatePath, 'utf8')
 
         const filledHtml = template
-            .replace('{{name}}', intent.metadata.name || '-')
+            .replace('{{name}}', customer.name || '-')
             .replace('{{email}}', intent.receipt_email || '-')
-            .replace('{{phone}}', intent.metadata.phone || '-')
+            .replace('{{phone}}', customer.phone || '-')
             .replace('{{plan}}', intent.metadata.plan || '-')
             .replace(
                 '{{includeScreen}}',
