@@ -11,6 +11,7 @@ export default function CheckoutForm({ plan, close }: Props) {
     const [clientSecret, setClientSecret] = useState<string | null>(null)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
+    const [countryCode, setCountryCode] = useState('+33') // default France
 
     // user inputs
     const [includeScreen, setIncludeScreen] = useState(false)
@@ -43,7 +44,7 @@ export default function CheckoutForm({ plan, close }: Props) {
                 body: JSON.stringify({
                     plan,
                     includeScreen,
-                    payer: { name, email, phone },
+                    payer: { name, email, phone: `${countryCode}${phone}` },
                 }),
             })
             const { clientSecret, error } = await res.json()
@@ -104,15 +105,26 @@ export default function CheckoutForm({ plan, close }: Props) {
                 />
             </label>
 
-            <label className="block text-black">
+            <div className="block text-black">
                 <span>Téléphone</span>
-                <input
-                    className="mt-1 w-full rounded border p-2"
-                    value={phone}
-                    onChange={e => setPhone(e.target.value)}
-                    required
-                />
-            </label>
+                <div className="mt-1 flex">
+                    <input
+                        type="text"
+                        placeholder="+33"
+                        className="w-1/6 rounded-l border border-r-0 p-2"
+                        value={countryCode}
+                        onChange={e => setCountryCode(e.target.value)}
+                        required
+                    />
+                    <input
+                        type="tel"
+                        className="w-full rounded-r border p-2"
+                        value={phone}
+                        onChange={e => setPhone(e.target.value)}
+                        required
+                    />
+                </div>
+            </div>
 
             <div className="flex items-center space-x-2 text-black">
                 <input
