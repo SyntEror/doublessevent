@@ -5,14 +5,20 @@ export default function PaymentStep({
     clientSecret,
     totalAmount,
     onBack,
+    plan,
 }: {
     clientSecret: string
     totalAmount: number
     onBack: () => void
+    plan: 'standard' | 'vip'
 }) {
     return (
         <StripeProvider clientSecret={clientSecret}>
-            <PaymentForm onBack={onBack} totalAmount={totalAmount} />
+            <PaymentForm
+                onBack={onBack}
+                totalAmount={totalAmount}
+                plan={plan}
+            />
         </StripeProvider>
     )
 }

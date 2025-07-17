@@ -3,10 +3,12 @@ import React, { useState } from 'react'
 
 export default function PaymentForm({
     onBack,
-    totalAmount, // Accept totalAmount as a prop
+    totalAmount,
+    plan,
 }: {
     onBack: () => void
-    totalAmount: number // Accept totalAmount as a prop
+    totalAmount: number
+    plan: 'standard' | 'vip'
 }) {
     const stripe = useStripe()
     const elements = useElements()
@@ -26,11 +28,12 @@ export default function PaymentForm({
     return (
         <form
             onSubmit={handlePay}
-            className="mx-auto max-w-lg space-y-4 rounded bg-white p-6 shadow"
+            className="md:p- mx-auto max-w-lg space-y-4 rounded bg-white p-6 md:p-2"
         >
-            {/* Display the total amount in the payment step */}
             <div className="font-semibold text-black">
-                <p>Total à payer: €{totalAmount}</p>
+                <p>
+                    Total à payer: <b>€{totalAmount}</b>
+                </p>
             </div>
 
             <PaymentElement />
@@ -39,16 +42,16 @@ export default function PaymentForm({
                 <button
                     type="button"
                     onClick={onBack}
-                    className="flex-1 rounded border py-2"
+                    className={`flex-1 rounded border-2 py-2 text-sm text-black md:text-base ${plan === 'standard' ? 'border-blue-600 hover:border-blue-700' : 'border-primary hover:border-primary/80'} `}
                 >
-                    Back
+                    Revenir en arrière
                 </button>
                 <button
                     type="submit"
                     disabled={!stripe}
-                    className="flex-1 rounded bg-indigo-600 py-2 text-white hover:bg-indigo-700"
+                    className={`flex-1 rounded text-sm text-white md:text-base ${plan === 'standard' ? 'bg-blue-600 hover:bg-blue-700' : 'bg-primary hover:bg-primary/80'}`}
                 >
-                    Pay
+                    Payer
                 </button>
             </div>
 

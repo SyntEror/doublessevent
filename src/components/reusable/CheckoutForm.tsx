@@ -66,6 +66,7 @@ export default function CheckoutForm({ plan, close }: Props) {
                 clientSecret={clientSecret}
                 onBack={() => setStep(0)}
                 totalAmount={calculateTotalAmount()}
+                plan={plan}
             />
         )
     }
@@ -74,11 +75,13 @@ export default function CheckoutForm({ plan, close }: Props) {
     return (
         <form
             onSubmit={handleNext}
-            className="mx-auto max-w-lg space-y-4 rounded-b-2xl bg-white p-6 shadow"
+            className="mx-auto max-w-lg space-y-4 bg-white p-6 md:p-2"
         >
-            <h2 className="mb-2 text-xl font-semibold text-blue-600">
+            <h1
+                className={`mb-2 text-2xl font-semibold ${plan === 'standard' ? 'text-blue-600' : 'text-primary'}`}
+            >
                 Plan {plan.toUpperCase()}
-            </h2>
+            </h1>
 
             <label className="block text-black">
                 <span>Nom et Prénom</span>
@@ -123,21 +126,23 @@ export default function CheckoutForm({ plan, close }: Props) {
 
             {/* Display total amount */}
             <div className="font-semibold text-black">
-                <p>Total à payer: €{calculateTotalAmount()}</p>
+                <p>
+                    Total à payer: <b>€{calculateTotalAmount()}</b>
+                </p>
             </div>
 
             <div className="flex gap-2">
                 <button
                     type="button"
                     onClick={close}
-                    className="flex-1 rounded border py-2"
+                    className={`flex-1 rounded border-2 text-black hover:bg-gray-100 ${plan === 'standard' ? 'border-blue-600 hover:border-blue-700' : 'border-primary hover:border-primary/80'} `}
                 >
                     Annuler
                 </button>
                 <button
                     type="submit"
                     disabled={loading}
-                    className="flex-1 rounded bg-indigo-600 py-2 text-white hover:bg-indigo-700"
+                    className={`flex-1 rounded py-2 text-white ${plan === 'standard' ? 'bg-blue-600 hover:bg-blue-700' : 'bg-primary hover:bg-primary/80'} `}
                 >
                     {loading ? 'Chargement...' : 'Continuer vers le paiement'}
                 </button>

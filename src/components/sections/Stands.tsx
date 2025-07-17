@@ -1,5 +1,6 @@
 'use client'
 import CheckoutForm from '@/components/reusable/CheckoutForm'
+import Modal from '@/components/reusable/Modal'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
@@ -25,24 +26,10 @@ const StandOffers = () => {
         show: { opacity: 1, y: 0 },
     }
 
-    /* simple modal wrapper */
-    const Modal = ({ children }: { children: React.ReactNode }) => (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-            <div className="max-w-full rounded bg-white shadow-lg">
-                {children}
-            </div>
-        </div>
-    )
-
     useEffect(() => {
-        // Log the URL parameters for debugging
         const urlParams = new URLSearchParams(window.location.search)
-        console.log('URL Params:', urlParams.toString()) // Log the full URL parameters
-
         const redirectStatus = urlParams.get('redirect_status')
-        console.log('Redirect Status:', redirectStatus) // Log the redirect status
 
-        // Determine the payment status based on the redirect_status parameter
         if (redirectStatus === 'succeeded') {
             setPaymentStatus('success')
         } else if (redirectStatus === 'failed') {
@@ -51,11 +38,10 @@ const StandOffers = () => {
     }, [])
 
     useEffect(() => {
-        // Trigger modal only if payment status is determined
         if (paymentStatus) {
             setShowModal(true)
         }
-    }, [paymentStatus]) // Make sure this effect runs when paymentStatus changes
+    }, [paymentStatus])
 
     return (
         <section id="stands" className="scroll-mt-24 px-1 py-12 md:px-6">
