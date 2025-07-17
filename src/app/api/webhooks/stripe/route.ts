@@ -37,10 +37,10 @@ export async function POST(req: NextRequest) {
     if (event.type === 'payment_intent.succeeded') {
         const intent = event.data.object as Stripe.PaymentIntent
 
-        // Load your HTML email template
+        // Load your HTML emails template
         const templatePath = path.join(
             process.cwd(),
-            'src/emails/internal-payment-notification.html',
+            'src/emails/payment-confirmation.html',
         )
         const template = fs.readFileSync(templatePath, 'utf8')
 
@@ -67,9 +67,9 @@ export async function POST(req: NextRequest) {
                 subject: `💰 Nouveau Paiement – ${intent.metadata.plan}`,
                 html: filledHtml,
             })
-            console.log('[WEBHOOK] Internal notification email sent ✅')
+            console.log('[WEBHOOK] Internal notification emails sent ✅')
         } catch (e) {
-            console.error('[WEBHOOK] Failed to send email:', e)
+            console.error('[WEBHOOK] Failed to send emails:', e)
         }
     }
 

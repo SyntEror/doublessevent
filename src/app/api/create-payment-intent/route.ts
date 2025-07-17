@@ -46,7 +46,7 @@ export async function POST(req: NextRequest) {
         )
     }
 
-    // Create or reuse customer by email
+    // Create or reuse customer by emails
     const customers = await stripe.customers.list({
         email: data.payer.email,
         limit: 1,
