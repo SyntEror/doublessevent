@@ -1,4 +1,5 @@
 // script/add-stripe-catalogue.ts
+import { env } from '@/env'
 import dotenv from 'dotenv'
 import { readFile } from 'fs/promises'
 import path, { dirname } from 'path'
@@ -11,7 +12,7 @@ dotenv.config()
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+const stripe = new Stripe(env.STRIPE_SECRET_KEY!, {
     apiVersion: '2025-06-30.basil',
 })
 

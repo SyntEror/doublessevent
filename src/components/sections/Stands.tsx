@@ -141,7 +141,7 @@ const StandOffers = () => {
             {showModal && (
                 <Modal>
                     {paymentStatus === 'success' ? (
-                        <div className="rounded-b-2xl p-8">
+                        <div className="rounded-b-2xl p-2">
                             <h2 className="text-2xl font-semibold text-green-600">
                                 Paiement réussi !
                             </h2>
@@ -157,7 +157,7 @@ const StandOffers = () => {
                             </button>
                         </div>
                     ) : paymentStatus === 'failure' ? (
-                        <div className="rounded-b-2xl p-8">
+                        <div className="rounded-b-2xl p-2">
                             <h2 className="text-2xl font-semibold text-red-600">
                                 Échec du paiement
                             </h2>
