@@ -2,11 +2,14 @@
 import CheckoutForm from '@/components/reusable/CheckoutForm'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const StandOffers = () => {
     const [showModal, setShowModal] = useState(false)
     const [type, setType] = useState<'standard' | 'vip'>('standard')
+    const [paymentStatus, setPaymentStatus] = useState<
+        'success' | 'failure' | null
+    >(null)
 
     const container = {
         hidden: { opacity: 0, y: 30 },
@@ -30,6 +33,29 @@ const StandOffers = () => {
             </div>
         </div>
     )
+
+    useEffect(() => {
+        // Log the URL parameters for debugging
+        const urlParams = new URLSearchParams(window.location.search)
+        console.log('URL Params:', urlParams.toString()) // Log the full URL parameters
+
+        const redirectStatus = urlParams.get('redirect_status')
+        console.log('Redirect Status:', redirectStatus) // Log the redirect status
+
+        // Determine the payment status based on the redirect_status parameter
+        if (redirectStatus === 'succeeded') {
+            setPaymentStatus('success')
+        } else if (redirectStatus === 'failed') {
+            setPaymentStatus('failure')
+        }
+    }, [])
+
+    useEffect(() => {
+        // Trigger modal only if payment status is determined
+        if (paymentStatus) {
+            setShowModal(true)
+        }
+    }, [paymentStatus]) // Make sure this effect runs when paymentStatus changes
 
     return (
         <section id="stands" className="scroll-mt-24 px-1 py-12 md:px-6">
@@ -128,10 +154,44 @@ const StandOffers = () => {
 
             {showModal && (
                 <Modal>
-                    <CheckoutForm
-                        plan={type}
-                        close={() => setShowModal(false)}
-                    />
+                    {paymentStatus === 'success' ? (
+                        <div className="rounded-b-2xl p-8">
+                            <h2 className="text-2xl font-semibold text-green-600">
+                                Paiement réussi !
+                            </h2>
+                            <p className="mt-4 text-lg text-black">
+                                Merci pour votre commande. Veuillez vérifier
+                                votre e-mail pour plus d&#39;informations.
+                            </p>
+                            <button
+                                className="mt-4 rounded bg-blue-600 px-4 py-2 text-white"
+                                onClick={() => setShowModal(false)}
+                            >
+                                Fermer
+                            </button>
+                        </div>
+                    ) : paymentStatus === 'failure' ? (
+                        <div className="rounded-b-2xl p-8">
+                            <h2 className="text-2xl font-semibold text-red-600">
+                                Échec du paiement
+                            </h2>
+                            <p className="mt-4 text-lg text-black">
+                                Il y a eu un problème avec votre paiement.
+                                Veuillez réessayer ou contacter le support.
+                            </p>
+                            <button
+                                className="mt-4 rounded bg-blue-600 px-4 py-2 text-white"
+                                onClick={() => setShowModal(false)}
+                            >
+                                Fermer
+                            </button>
+                        </div>
+                    ) : (
+                        <CheckoutForm
+                            plan={type}
+                            close={() => setShowModal(false)}
+                        />
+                    )}
                 </Modal>
             )}
         </section>

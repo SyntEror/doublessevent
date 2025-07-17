@@ -72,7 +72,7 @@ export async function POST(req: NextRequest) {
         currency: 'eur',
         customer: customerId,
         capture_method: 'automatic',
-        payment_method_types: ['card', 'paypal', 'klarna'], // enable everything in Dashboard first
+        payment_method_types: ['card', 'paypal'],
         metadata: {
             plan: data.plan,
             includeScreen: data.includeScreen ? 'yes' : 'no',
