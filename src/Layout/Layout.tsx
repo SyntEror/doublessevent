@@ -1,16 +1,21 @@
 'use client'
 import { Footer } from '@/Layout/Footer'
 import Head from 'next/head'
-import { type ReactNode } from 'react'
+import { type ReactNode, use } from 'react'
 import { ParallaxProvider } from 'react-scroll-parallax'
 import Navbar from './Navbar'
 
+type Params = Promise<{ locale: string }>
+
 type Props = {
     children: ReactNode
+    params: Params
 }
 
-const Layout = ({ children }: Props) => {
+const Layout = ({ children, params }: Props) => {
+    const { locale } = use(params)
     // const Layout = ({ children }: Props) => {
+    console.log('Layout params:', locale)
     const schema = {
         '@context': 'https://schema.org',
         '@type': 'Organization',
