@@ -1,4 +1,3 @@
-'use client'
 import Divider from '@/components/reusable/Divider'
 import Image from 'next/image'
 import { CiFacebook, CiLocationOn, CiMail, CiPhone } from 'react-icons/ci'

@@ -36,10 +36,10 @@ const LanguageSwitcher = ({ className, showLabel = false }: Props) => {
                                     languageDetector.cache(locale)
                                 }
                                 className={`${
-                                    locale === currentLocale && 'text-red-500'
+                                    locale === currentLocale && 'text-primary'
                                 }`}
                             >
-                                {locale === 'en' ? 'EN' : 'DE'}
+                                {locale === 'fr' ? 'FR' : 'IT'}
                             </Link>
                         </div>
                     )

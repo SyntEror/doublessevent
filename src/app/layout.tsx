@@ -42,7 +42,7 @@ type RootLayoutProps = {
 
 export default function RootLayout({ children }: RootLayoutProps) {
     return (
-        <html lang="en">
+        <html lang="fr" className="scroll-smooth">
             <head>
                 <title>
                     DoubleSS event - L&#39;art de sublimer vos événements

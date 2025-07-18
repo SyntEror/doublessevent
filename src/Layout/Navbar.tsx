@@ -1,4 +1,5 @@
 'use client'
+import LanguageSwitcher from '@/components/reusable/LanguageSwitcher'
 import useScrollDirection from '@/hooks/useScrollDirection'
 import { m } from 'framer-motion'
 import Image from 'next/image'
@@ -30,6 +31,7 @@ const Navbar: FC = () => {
                 </a>
                 <a href={'#stands'}>Nos offre de stands</a>
             </div>
+            <LanguageSwitcher />
             {/*<a*/}
             {/*    href={'#contact'}*/}
             {/*    className="rounded-md bg-secondary px-4 py-2 text-black"*/}

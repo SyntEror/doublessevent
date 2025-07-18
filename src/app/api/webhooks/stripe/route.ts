@@ -14,8 +14,6 @@ const transporter = nodemailer.createTransport({
     port: Number(env.SMTP_PORT),
     secure: true,
     auth: { user: env.SMTP_USER, pass: env.SMTP_PASSWORD },
-    logger: true,
-    debug: true,
 })
 
 export async function POST(req: NextRequest) {
