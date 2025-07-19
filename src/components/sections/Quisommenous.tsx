@@ -2,8 +2,10 @@
 import { motion, Variants } from 'framer-motion'
 import { MapPin } from 'lucide-react'
 import Image from 'next/image'
+import { useTranslation } from 'react-i18next'
 
 const Quisommenous = () => {
+    const { t } = useTranslation('quisommenous')
     const containerVariants: Variants = {
         hidden: { opacity: 0, y: 20 },
         visible: {
@@ -21,6 +23,7 @@ const Quisommenous = () => {
             transition: { duration: 0.5, ease: 'easeOut' },
         },
     }
+
     return (
         <section
             className="scroll-mt-16 py-12 sm:py-16 lg:py-20"
@@ -28,7 +31,7 @@ const Quisommenous = () => {
         >
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <h1 className="mb-10 text-center text-3xl font-bold text-secondary sm:text-4xl md:text-5xl lg:text-6xl">
-                    🤔 Qui sommes-nous ?
+                    {t('title')}
                 </h1>
                 <motion.div
                     className="flex flex-col gap-12 md:flex-row md:gap-16"
@@ -55,12 +58,7 @@ const Quisommenous = () => {
                         variants={itemVariants}
                         className="flex w-full items-center justify-center text-center text-xl font-medium leading-relaxed text-white sm:text-2xl md:w-1/2 md:text-left lg:w-3/5 lg:text-3xl"
                     >
-                        DoubleSS Event est une entreprise spécialisée dans
-                        l&#39;organisation d&#39;événements uniques et
-                        mémorables. Notre équipe passionnée s&#39;engage à
-                        transformer vos idées en réalité, en créant des
-                        expériences sur mesure qui laissent une empreinte
-                        indélébile.
+                        {t('description')}
                     </motion.div>
                 </motion.div>
                 <motion.div
@@ -72,7 +70,7 @@ const Quisommenous = () => {
                     id="localisation"
                 >
                     <h3 className="mb-8 flex items-center justify-center gap-2 text-center text-3xl font-bold text-secondary sm:text-4xl md:text-5xl">
-                        <MapPin className="h-8 w-8" /> Notre Localisation
+                        <MapPin className="h-8 w-8" /> {t('locationTitle')}
                     </h3>
                     <motion.div
                         variants={itemVariants}

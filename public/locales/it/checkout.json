@@ -1,0 +1,20 @@
+{
+  "title": "Piano {{plan}}",
+  "nameLabel": "Nome e Cognome",
+  "namePlaceholder": "Es: Sonia H. R.",
+  "emailLabel": "Email",
+  "emailPlaceholder": "Es: sony@gmail.com",
+  "phoneLabel": "Telefono",
+  "phoneCountryPlaceholder": "39",
+  "phonePlaceholder": "Es: 1234567890",
+  "screenOption": "Aggiungi “schermo” (+ €500)",
+  "total": "Totale da pagare: €{{amount}}",
+  "cancel": "Annulla",
+  "continue": "Continua al pagamento",
+  "loading": "Caricamento...",
+  "errorServer": "Errore del server, riprova.",
+  "back": "Torna indietro",
+  "pay": "Paga",
+  "paying": "Pagamento in corso...",
+  "paymentFailed": "Pagamento non riuscito"
+}

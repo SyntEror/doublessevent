@@ -1,0 +1,37 @@
+{
+  "title": "Le nostre offerte Stand",
+  "standard": {
+    "title": "STAND STANDARD – 3×3 m",
+    "description": "Visibilità professionale a un prezzo accessibile",
+    "features": [
+      "Superficie: 9 m² (3×3 m)",
+      "Prezzo tutto incluso: 2.099 €",
+      "Arredamento completo con vetrina",
+      "Insegna personalizzata inclusa",
+      "Illuminazione & elettricità incluse",
+      "Opzione schermo: +500 €"
+    ],
+    "cta": "Prenota questo stand"
+  },
+  "vip": {
+    "title": "STAND VIP – 4×4 m",
+    "description": "Una presenza prestigiosa in fiera",
+    "features": [
+      "Spazio premium 4×4 m",
+      "Prezzo tutto incluso: 3.099 €",
+      "Design moderno e raffinato",
+      "Arredi, logo e insegne personalizzate",
+      "Elettricità e alloggio inclusi",
+      "Trasporto hotel-fiera incluso",
+      "Opzione schermo: +500 €"
+    ],
+    "cta": "Prenota questo stand"
+  },
+  "payment": {
+    "successTitle": "Pagamento riuscito!",
+    "successMessage": "Grazie per il tuo ordine. Controlla la tua email per ulteriori informazioni.",
+    "failureTitle": "Pagamento fallito",
+    "failureMessage": "C'è stato un problema con il tuo pagamento. Riprova o contatta il supporto.",
+    "close": "Chiudi"
+  }
+}

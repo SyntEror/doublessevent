@@ -1,0 +1,37 @@
+{
+  "title": "Nos Offres de Stand",
+  "standard": {
+    "title": "STAND STANDARD – 3×3 m",
+    "description": "Visibilité professionnelle à prix maîtrisé",
+    "features": [
+      "Surface : 9 m² (3×3 m)",
+      "Tarif tout inclus : 2 099 €",
+      "Mobilier complet avec vitrine",
+      "Enseigne personnalisée incluse",
+      "Éclairage & électricité fournis",
+      "Option écran : +500 €"
+    ],
+    "cta": "Réserver ce stand"
+  },
+  "vip": {
+    "title": "STAND VIP – 4×4 m",
+    "description": "Une présence prestigieuse au salon",
+    "features": [
+      "Espace premium 4×4 m",
+      "Tarif tout inclus : 3 099 €",
+      "Design moderne & raffiné",
+      "Mobilier, logo & enseignes personnalisés",
+      "Électricité & hébergement inclus",
+      "Transport hôtel-salon offert",
+      "Option écran : +500 €"
+    ],
+    "cta": "Réserver ce stand"
+  },
+  "payment": {
+    "successTitle": "Paiement réussi !",
+    "successMessage": "Merci pour votre commande. Veuillez vérifier votre e-mail pour plus d'informations.",
+    "failureTitle": "Échec du paiement",
+    "failureMessage": "Il y a eu un problème avec votre paiement. Veuillez réessayer ou contacter le support.",
+    "close": "Fermer"
+  }
+}

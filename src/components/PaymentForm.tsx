@@ -1,5 +1,7 @@
+'use client'
 import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export default function PaymentForm({
     onBack,
@@ -12,6 +14,7 @@ export default function PaymentForm({
 }) {
     const stripe = useStripe()
     const elements = useElements()
+    const { t } = useTranslation('checkout')
     const [message, setMessage] = useState('')
     const [loading, setLoading] = useState(false)
 
@@ -28,7 +31,7 @@ export default function PaymentForm({
         })
 
         if (error) {
-            setMessage(error.message ?? 'Payment failed')
+            setMessage(error.message ?? t('paymentFailed'))
         }
 
         setLoading(false)
@@ -37,12 +40,10 @@ export default function PaymentForm({
     return (
         <form
             onSubmit={handlePay}
-            className="md:p- mx-auto max-w-lg space-y-4 rounded bg-white p-6 md:p-2"
+            className="mx-auto max-w-lg space-y-4 rounded bg-white p-6 md:p-2"
         >
             <div className="font-semibold text-black">
-                <p>
-                    Total à payer: <b>€{totalAmount}</b>
-                </p>
+                <p>{t('total', { amount: totalAmount })}</p>
             </div>
 
             <PaymentElement />
@@ -51,17 +52,25 @@ export default function PaymentForm({
                 <button
                     type="button"
                     onClick={onBack}
-                    className={`flex-1 rounded border-2 py-2 text-sm text-black md:text-base ${plan === 'standard' ? 'border-blue-600 hover:border-blue-700' : 'border-primary hover:border-primary/80'}`}
+                    className={`flex-1 rounded border-2 py-2 text-sm text-black md:text-base ${
+                        plan === 'standard'
+                            ? 'border-blue-600 hover:border-blue-700'
+                            : 'border-primary hover:border-primary/80'
+                    }`}
                     disabled={loading}
                 >
-                    Revenir en arrière
+                    {t('back')}
                 </button>
                 <button
                     type="submit"
                     disabled={!stripe || loading}
-                    className={`flex-1 rounded py-2 text-sm text-white md:text-base ${plan === 'standard' ? 'bg-blue-600 hover:bg-blue-700' : 'bg-primary hover:bg-primary/80'}`}
+                    className={`flex-1 rounded py-2 text-sm text-white md:text-base ${
+                        plan === 'standard'
+                            ? 'bg-blue-600 hover:bg-blue-700'
+                            : 'bg-primary hover:bg-primary/80'
+                    }`}
                 >
-                    {loading ? 'Paiement en cours...' : 'Payer'}
+                    {loading ? t('paying') : t('pay')}
                 </button>
             </div>
 

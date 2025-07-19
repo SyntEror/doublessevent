@@ -1,0 +1,8 @@
+{
+  "links": [
+    { "label": "Services", "href": "#services" },
+    { "label": "Qui sommes nous", "href": "#quisommenous" },
+    { "label": "Réserver ou Demander un Devis" },
+    { "label": "Nos offre de stands", "href": "#stands" }
+  ]
+}

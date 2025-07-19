@@ -1,9 +1,18 @@
 import Divider from '@/components/reusable/Divider'
+import LanguageSwitcher from '@/components/reusable/LanguageSwitcher'
 import Image from 'next/image'
+import { useTranslation } from 'react-i18next'
 import { CiFacebook, CiLocationOn, CiMail, CiPhone } from 'react-icons/ci'
 import { FaInstagram } from 'react-icons/fa'
 
 export const Footer = () => {
+    const { t } = useTranslation('footer')
+    const { t: tt } = useTranslation('navbar')
+    const links = tt('links', { returnObjects: true }) as {
+        label: string
+        href?: string
+    }[]
+
     return (
         <footer className="flex flex-col items-center gap-6 bg-galaxy-100/60 p-4 text-white backdrop-blur md:items-start">
             <div className="flex w-full flex-col items-center justify-between gap-y-10 md:flex-row md:items-start md:gap-y-0">
@@ -23,7 +32,7 @@ export const Footer = () => {
                         />
                     </button>
                     <div className="pl-6 text-xs font-light text-gray-400">
-                        L’art de sublimer vos événements
+                        {t('slogan')}
                     </div>
                     <div className="flex items-center justify-center gap-2">
                         <a
@@ -43,78 +52,71 @@ export const Footer = () => {
                     </div>
                 </div>
                 <div className="my-auto flex flex-col items-center justify-center gap-8 text-gray-400 md:flex-row">
-                    <a
-                        className="underline-offset-2 hover:underline"
-                        href={'#services'}
-                    >
-                        Services
-                    </a>
-                    <a
-                        className="underline-offset-2 hover:underline"
-                        href={'#quisommenous'}
-                    >
-                        Qui sommes nous
-                    </a>
-                    {/*<a href={'#temoignages'}>Témoignages</a>*/}
-                    <a
-                        className="underline-offset-2 hover:underline"
-                        href={'#reserver'}
-                    >
-                        Réserver ou Demander un Devis
-                    </a>
-                    <a
-                        className="underline-offset-2 hover:underline"
-                        href={'#stands'}
-                    >
-                        Nos offre de stands
-                    </a>
+                    {links.map((link, idx) =>
+                        link.href ? (
+                            <a key={idx} href={link.href}>
+                                {link.label}
+                            </a>
+                        ) : (
+                            <span
+                                key={idx}
+                                className="cursor-not-allowed text-gray-400"
+                            >
+                                {link.label}
+                            </span>
+                        ),
+                    )}
                 </div>
                 <div className="my-auto flex">
                     <div className="flex flex-col gap-2 pr-4 text-xs text-gray-400">
                         <div className="flex gap-2">
                             <CiMail className="h-6 w-10" />
                             <a
-                                href="mailto:info@doublessevent.com"
+                                href={`mailto:${t('contact.email')}`}
                                 className="flex items-center"
                             >
-                                info@doublessevent.com
+                                {t('contact.email')}
                             </a>
                         </div>
                         <div className="flex gap-2">
                             <CiPhone className="h-6 w-10" />
                             <a
-                                href="tel:+393508407378"
+                                href={`tel:${t('contact.phone')}`}
                                 className="flex items-center"
                             >
-                                +39 350 840 7378
+                                {t('contact.phone')}
                             </a>
                         </div>
                         <div className="flex gap-2">
                             <CiLocationOn className="h-6 w-10" />
-
                             <a
                                 className="flex items-center"
-                                href={'#localisation'}
+                                href="#localisation"
                             >
-                                Via Leonardo Da Vinci (VA)
+                                {t('contact.location')}
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <Divider background={'bg-gray-500'} className="opacity-40" />
-            <div className="relative w-full">
-                <p className="text-center text-sm text-gray-400">
-                    © 2025 Copyright. TVA: 03903010126.
+
+            <Divider background="bg-gray-500" className="opacity-40" />
+
+            <div className="flex w-full flex-col items-center justify-center gap-4 px-4 text-center md:flex-row md:justify-between md:text-left">
+                <LanguageSwitcher />
+
+                <p className="order-last text-xs text-gray-400 md:order-none md:text-sm">
+                    {t('copyright')}
                 </p>
+
                 <a
                     href="https://www.syntaxeror.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="absolute right-4 top-0 flex items-center gap-1 text-sm text-gray-400 hover:underline"
-                    aria-label="Conçu par SyntaxEror"
+                    className="flex items-center gap-1 text-sm text-gray-400 hover:underline"
+                    aria-label={t('builtBy')}
                 >
-                    Conçu par
+                    {t('builtBy')}
                     <Image
                         src="/logo-small.png"
                         alt="SyntaxEror Logo"

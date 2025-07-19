@@ -8,12 +8,9 @@ import { useTranslation } from 'react-i18next'
 
 const Navbar: FC = () => {
     const { scrollDirection } = useScrollDirection()
-    const { t } = useTranslation()
-    const links = t('navbar', { returnObjects: true }) as {
-        label: string
-        href: string | null
-        disabled?: boolean
-    }[]
+    const { t } = useTranslation('navbar')
+    const rawLinks = t('links', { returnObjects: true })
+    const links = Array.isArray(rawLinks) ? rawLinks : []
 
     return (
         <m.nav
@@ -29,19 +26,19 @@ const Navbar: FC = () => {
                 height={1000}
                 className="w-16 md:w-20"
             />
-            <div className="hidden gap-8 md:flex">
+            <div className="gap-8 md:flex">
                 {links.map((link, idx) =>
-                    link.disabled ? (
+                    link.href ? (
+                        <a key={idx} href={link.href}>
+                            {link.label}
+                        </a>
+                    ) : (
                         <span
                             key={idx}
                             className="cursor-not-allowed text-gray-400"
                         >
                             {link.label}
                         </span>
-                    ) : (
-                        <a key={idx} href={link.href || '#'}>
-                            {link.label}
-                        </a>
                     ),
                 )}
             </div>

@@ -35,7 +35,7 @@ const LanguageSwitcher = ({ className, showLabel = false }: Props) => {
                                     languageDetector?.cache &&
                                     languageDetector.cache(locale)
                                 }
-                                className={`${
+                                className={`text-sm md:text-base ${
                                     locale === currentLocale && 'text-primary'
                                 }`}
                             >

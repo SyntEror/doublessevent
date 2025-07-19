@@ -13,10 +13,10 @@ type Props = {
 export default function RootLayout({ children, params }: Props) {
     const { locale } = use(params)
     return (
-        <Layout>
-            <I18nProvider lang={locale}>
+        <I18nProvider lang={locale}>
+            <Layout>
                 <ParallaxProvider>{children}</ParallaxProvider>
-            </I18nProvider>
-        </Layout>
+            </Layout>
+        </I18nProvider>
     )
 }

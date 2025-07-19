@@ -4,6 +4,7 @@ import Modal from '@/components/reusable/Modal'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 const StandOffers = () => {
     const [showModal, setShowModal] = useState(false)
@@ -11,6 +12,7 @@ const StandOffers = () => {
     const [paymentStatus, setPaymentStatus] = useState<
         'success' | 'failure' | null
     >(null)
+    const { t } = useTranslation('stands')
 
     const container = {
         hidden: { opacity: 0, y: 30 },
@@ -43,6 +45,28 @@ const StandOffers = () => {
         }
     }, [paymentStatus])
 
+    const standard = t('standard', { returnObjects: true }) as {
+        title: string
+        description: string
+        features: string[]
+        cta: string
+    }
+
+    const vip = t('vip', { returnObjects: true }) as {
+        title: string
+        description: string
+        features: string[]
+        cta: string
+    }
+
+    const payment = t('payment', { returnObjects: true }) as {
+        successTitle: string
+        successMessage: string
+        failureTitle: string
+        failureMessage: string
+        close: string
+    }
+
     return (
         <section id="stands" className="scroll-mt-16 px-1 py-12 md:px-6">
             <motion.div
@@ -53,11 +77,11 @@ const StandOffers = () => {
                 variants={container}
             >
                 <h1 className="mb-10 text-center text-3xl font-bold text-secondary sm:text-4xl md:text-5xl lg:text-6xl">
-                    Nos Offres de Stand
+                    {t('title')}
                 </h1>
 
                 <div className="flex flex-col justify-around gap-y-10 md:flex-row">
-                    {/* Standard card */}
+                    {/* Standard Stand */}
                     <motion.div
                         className="flex w-full flex-col rounded-lg bg-white p-3.5 shadow-lg md:w-[500px] md:p-6"
                         variants={item}
@@ -72,22 +96,16 @@ const StandOffers = () => {
                             />
                         </div>
                         <h3 className="mb-2 text-xl font-semibold text-blue-600">
-                            STAND STANDARD – 3×3 m
+                            {standard.title}
                         </h3>
                         <p className="mb-4 text-gray-700">
-                            Visibilité professionnelle à prix maîtrisé
+                            {standard.description}
                         </p>
                         <ul className="mb-4 list-inside list-disc space-y-1 text-sm text-gray-600">
-                            <li>Surface : 9 m² (3×3 m)</li>
-                            <li>
-                                Tarif tout inclus : <b>2 099 €</b>
-                            </li>
-                            <li>Mobilier complet avec vitrine</li>
-                            <li>Enseigne personnalisée incluse</li>
-                            <li>Éclairage & électricité fournis</li>
-                            <li>
-                                Option écran : <b>+500 €</b>
-                            </li>
+                            {Array.isArray(standard.features) &&
+                                standard.features.map((feature, idx) => (
+                                    <li key={idx}>{feature}</li>
+                                ))}
                         </ul>
                         <button
                             className="mt-auto rounded bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700"
@@ -96,11 +114,11 @@ const StandOffers = () => {
                                 setShowModal(true)
                             }}
                         >
-                            Réserver ce stand
+                            {standard.cta}
                         </button>
                     </motion.div>
 
-                    {/* VIP card */}
+                    {/* VIP Stand */}
                     <motion.div
                         className="flex w-full flex-col rounded-lg bg-secondary p-3.5 shadow-lg md:w-[500px] md:p-6"
                         variants={item}
@@ -115,23 +133,14 @@ const StandOffers = () => {
                             />
                         </div>
                         <h3 className="mb-2 text-xl font-semibold text-primary">
-                            STAND VIP – 4×4 m
+                            {vip.title}
                         </h3>
-                        <p className="mb-4 text-gray-700">
-                            Une présence prestigieuse au salon
-                        </p>
+                        <p className="mb-4 text-gray-700">{vip.description}</p>
                         <ul className="mb-4 list-inside list-disc space-y-1 text-sm text-gray-600">
-                            <li>Espace premium 4×4 m</li>
-                            <li>
-                                Tarif tout inclus : <b>3 099 €</b>
-                            </li>
-                            <li>Design moderne & raffiné</li>
-                            <li>Mobilier, logo & enseignes personnalisés</li>
-                            <li>Électricité & hébergement inclus</li>
-                            <li>Transport hôtel-salon offert</li>
-                            <li>
-                                Option écran : <b>+500 €</b>
-                            </li>
+                            {Array.isArray(vip.features) &&
+                                vip.features.map((feature, idx) => (
+                                    <li key={idx}>{feature}</li>
+                                ))}
                         </ul>
                         <button
                             onClick={() => {
@@ -140,7 +149,7 @@ const StandOffers = () => {
                             }}
                             className="mt-auto rounded bg-primary px-4 py-2 text-white transition hover:bg-primary/80"
                         >
-                            Réserver ce stand
+                            {vip.cta}
                         </button>
                     </motion.div>
                 </div>
@@ -151,33 +160,31 @@ const StandOffers = () => {
                     {paymentStatus === 'success' ? (
                         <div className="rounded-b-2xl p-2">
                             <h2 className="text-2xl font-semibold text-green-600">
-                                Paiement réussi !
+                                {payment.successTitle}
                             </h2>
                             <p className="mt-4 text-lg text-black">
-                                Merci pour votre commande. Veuillez vérifier
-                                votre e-mail pour plus d&#39;informations.
+                                {payment.successMessage}
                             </p>
                             <button
                                 className="mt-4 rounded bg-blue-600 px-4 py-2 text-white"
                                 onClick={() => setShowModal(false)}
                             >
-                                Fermer
+                                {payment.close}
                             </button>
                         </div>
                     ) : paymentStatus === 'failure' ? (
                         <div className="rounded-b-2xl p-2">
                             <h2 className="text-2xl font-semibold text-red-600">
-                                Échec du paiement
+                                {payment.failureTitle}
                             </h2>
                             <p className="mt-4 text-lg text-black">
-                                Il y a eu un problème avec votre paiement.
-                                Veuillez réessayer ou contacter le support.
+                                {payment.failureMessage}
                             </p>
                             <button
                                 className="mt-4 rounded bg-blue-600 px-4 py-2 text-white"
                                 onClick={() => setShowModal(false)}
                             >
-                                Fermer
+                                {payment.close}
                             </button>
                         </div>
                     ) : (
