@@ -1,11 +1,16 @@
 'use client'
+import LanguageSwitcher from '@/components/reusable/LanguageSwitcher'
 import useScrollDirection from '@/hooks/useScrollDirection'
 import { m } from 'framer-motion'
 import Image from 'next/image'
 import { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 
 const Navbar: FC = () => {
     const { scrollDirection } = useScrollDirection()
+    const { t } = useTranslation('navbar')
+    const rawLinks = t('links', { returnObjects: true })
+    const links = Array.isArray(rawLinks) ? rawLinks : []
 
     return (
         <m.nav
@@ -21,21 +26,23 @@ const Navbar: FC = () => {
                 height={1000}
                 className="w-16 md:w-20"
             />
-            <div className="hidden gap-8 md:flex">
-                <a href={'#services'}>Services</a>
-                <a href={'#quisommenous'}>Qui sommes nous</a>
-                {/*<a href={'#temoignages'}>Témoignages</a>*/}
-                <a className="cursor-not-allowed text-gray-400">
-                    Réserver ou Demander un Devis
-                </a>
-                <a href={'#stands'}>Nos offre de stands</a>
+            <div className="gap-8 md:flex">
+                {links.map((link, idx) =>
+                    link.href ? (
+                        <a key={idx} href={link.href}>
+                            {link.label}
+                        </a>
+                    ) : (
+                        <span
+                            key={idx}
+                            className="cursor-not-allowed text-gray-400"
+                        >
+                            {link.label}
+                        </span>
+                    ),
+                )}
             </div>
-            {/*<a*/}
-            {/*    href={'#contact'}*/}
-            {/*    className="rounded-md bg-secondary px-4 py-2 text-black"*/}
-            {/*>*/}
-            {/*    Contact*/}
-            {/*</a>*/}
+            <LanguageSwitcher />
         </m.nav>
     )
 }

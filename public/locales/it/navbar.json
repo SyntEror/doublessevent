@@ -1,0 +1,8 @@
+{
+  "links": [
+    { "label": "Servizi", "href": "#services" },
+    { "label": "Chi siamo", "href": "#quisommenous" },
+    { "label": "Prenota o Richiedi un Preventivo" },
+    { "label": "Le nostre offerte Stand", "href": "#stands" }
+  ]
+}

@@ -1,7 +1,4 @@
 import { env } from '@/env'
-import { Footer } from '@/Layout/Footer'
-import Navbar from '@/Layout/Navbar'
-import { ClientProviders } from '@/lib/ClientProviders'
 import type { Metadata } from 'next'
 import { ReactNode } from 'react'
 import './globals.css'
@@ -39,13 +36,13 @@ export const metadata: Metadata = {
     },
 }
 
-export default function RootLayout({
-    children,
-}: Readonly<{
+type RootLayoutProps = {
     children: ReactNode
-}>) {
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
     return (
-        <html lang="en">
+        <html lang="fr" className="scroll-smooth">
             <head>
                 <title>
                     DoubleSS event - L&#39;art de sublimer vos événements
@@ -53,9 +50,7 @@ export default function RootLayout({
                 <link rel="icon" href="/logo.png" />
             </head>
             <body className="relative overflow-x-hidden bg-[#1f1f1f]">
-                <Navbar />
-                <ClientProviders>{children}</ClientProviders>
-                <Footer />
+                {children}
             </body>
         </html>
     )

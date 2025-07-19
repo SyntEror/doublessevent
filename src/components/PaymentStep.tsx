@@ -12,7 +12,6 @@ export default function PaymentStep({
     onBack: () => void
     plan: 'standard' | 'vip'
 }) {
-    console.log('totalAmount', totalAmount)
     return (
         <StripeProvider clientSecret={clientSecret}>
             <PaymentForm

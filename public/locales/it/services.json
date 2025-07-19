@@ -1,0 +1,22 @@
+{
+  "title": "🎉 I nostri servizi",
+  "items": [
+    {
+      "title": "Eventi privati",
+      "description": "Organizzazione completa per matrimoni, compleanni, baby shower e altro ancora. Personalizziamo ogni dettaglio per rendere il tuo evento indimenticabile.",
+      "image": "/assets/mariage.jpg",
+      "price": "A partire da 1000€"
+    },
+    {
+      "title": "Eventi aziendali",
+      "description": "Conferenze, lanci di prodotto, team building. Soluzioni professionali su misura per un impatto massimo.",
+      "image": "/assets/1.jpg",
+      "price": "A partire da 2000€"
+    },
+    {
+      "title": "Servizi aggiuntivi",
+      "description": "Decorazioni su misura, hostess professionali, DJ, fotografia e catering per completare il tuo evento.",
+      "image": "/assets/2.jpg"
+    }
+  ]
+}

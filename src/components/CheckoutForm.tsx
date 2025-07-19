@@ -1,37 +1,32 @@
 'use client'
 import PaymentStep from '@/components/PaymentStep'
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
-// ---------- whole two-step form ----------
 type Props = { plan: 'standard' | 'vip'; close: () => void }
 
 export default function CheckoutForm({ plan, close }: Props) {
-    // step 0 = collecting info, step 1 = payment element
+    const { t } = useTranslation('checkout')
     const [step, setStep] = useState<0 | 1>(0)
     const [clientSecret, setClientSecret] = useState<string | null>(null)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
     const [countryCode, setCountryCode] = useState('33')
-
-    // user inputs
     const [includeScreen, setIncludeScreen] = useState(false)
     const [email, setEmail] = useState('')
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
 
-    // Pricing for each plan
     const standardPrice = 2099
     const vipPrice = 3099
     const screenPrice = 500
 
-    // Calculate total price
     const calculateTotalAmount = () => {
         let totalAmount = plan === 'standard' ? standardPrice : vipPrice
         if (includeScreen) totalAmount += screenPrice
         return totalAmount
     }
 
-    // first screen: collect details
     const handleNext = async (e: React.FormEvent) => {
         e.preventDefault()
         setError('')
@@ -56,7 +51,7 @@ export default function CheckoutForm({ plan, close }: Props) {
             }
         } catch (err) {
             console.log(err)
-            setError('Server error, please try again.')
+            setError(t('errorServer'))
         }
         setLoading(false)
     }
@@ -72,7 +67,6 @@ export default function CheckoutForm({ plan, close }: Props) {
         )
     }
 
-    // step 0 UI
     return (
         <form
             onSubmit={handleNext}
@@ -81,14 +75,14 @@ export default function CheckoutForm({ plan, close }: Props) {
             <h1
                 className={`mb-2 text-2xl font-semibold ${plan === 'standard' ? 'text-blue-600' : 'text-primary'}`}
             >
-                Plan {plan.toUpperCase()}
+                {t('title', { plan: plan.toUpperCase() })}
             </h1>
 
             <label className="block text-black">
-                <span>Nom et Prénom</span>
+                <span>{t('nameLabel')}</span>
                 <input
                     className="mt-1 w-full rounded border p-2"
-                    placeholder="Ex: Sonia H. R."
+                    placeholder={t('namePlaceholder')}
                     value={name}
                     onChange={e => setName(e.target.value)}
                     required
@@ -96,11 +90,11 @@ export default function CheckoutForm({ plan, close }: Props) {
             </label>
 
             <label className="block text-black">
-                <span>Email</span>
+                <span>{t('emailLabel')}</span>
                 <input
                     type="email"
                     className="mt-1 w-full rounded border p-2"
-                    placeholder="Ex: Sony@gmail.com"
+                    placeholder={t('emailPlaceholder')}
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                     required
@@ -108,7 +102,7 @@ export default function CheckoutForm({ plan, close }: Props) {
             </label>
 
             <div className="block text-black">
-                <span>Téléphone</span>
+                <span>{t('phoneLabel')}</span>
                 <div className="mt-1 flex">
                     <div className="flex items-center rounded-l border border-r-0 bg-gray-100 px-2 text-black">
                         +
@@ -116,7 +110,7 @@ export default function CheckoutForm({ plan, close }: Props) {
                     <input
                         type="tel"
                         pattern="[0-9]*"
-                        placeholder="33"
+                        placeholder={t('phoneCountryPlaceholder')}
                         className="w-1/6 border-b border-r border-t p-2"
                         value={countryCode}
                         onChange={e =>
@@ -127,7 +121,7 @@ export default function CheckoutForm({ plan, close }: Props) {
                     <input
                         type="tel"
                         className="w-full rounded-r border p-2"
-                        placeholder="Ex : 1234567890"
+                        placeholder={t('phonePlaceholder')}
                         value={phone}
                         onChange={e => setPhone(e.target.value)}
                         required
@@ -142,30 +136,35 @@ export default function CheckoutForm({ plan, close }: Props) {
                     checked={includeScreen}
                     onChange={() => setIncludeScreen(!includeScreen)}
                 />
-                <label htmlFor="screen">Ajouter “écran” (+ €500)</label>
+                <label htmlFor="screen">{t('screenOption')}</label>
             </div>
 
-            {/* Display total amount */}
             <div className="font-semibold text-black">
-                <p>
-                    Total à payer: <b>€{calculateTotalAmount()}</b>
-                </p>
+                <p>{t('total', { amount: calculateTotalAmount() })}</p>
             </div>
 
             <div className="flex gap-2">
                 <button
                     type="button"
                     onClick={close}
-                    className={`flex-1 rounded border-2 text-black hover:bg-gray-100 ${plan === 'standard' ? 'border-blue-600 hover:border-blue-700' : 'border-primary hover:border-primary/80'} `}
+                    className={`flex-1 rounded border-2 text-black hover:bg-gray-100 ${
+                        plan === 'standard'
+                            ? 'border-blue-600 hover:border-blue-700'
+                            : 'border-primary hover:border-primary/80'
+                    }`}
                 >
-                    Annuler
+                    {t('cancel')}
                 </button>
                 <button
                     type="submit"
                     disabled={loading}
-                    className={`flex-1 rounded py-2 text-white ${plan === 'standard' ? 'bg-blue-600 hover:bg-blue-700' : 'bg-primary hover:bg-primary/80'} `}
+                    className={`flex-1 rounded py-2 text-white ${
+                        plan === 'standard'
+                            ? 'bg-blue-600 hover:bg-blue-700'
+                            : 'bg-primary hover:bg-primary/80'
+                    }`}
                 >
-                    {loading ? 'Chargement...' : 'Continuer vers le paiement'}
+                    {loading ? t('loading') : t('continue')}
                 </button>
             </div>
 
