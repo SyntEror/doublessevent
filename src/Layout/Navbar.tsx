@@ -26,7 +26,7 @@ const Navbar: FC = () => {
                 height={1000}
                 className="w-16 md:w-20"
             />
-            <div className="gap-8 md:flex">
+            <div className="hidden gap-8 md:flex md:items-center">
                 {links.map((link, idx) =>
                     link.href ? (
                         <a key={idx} href={link.href}>
