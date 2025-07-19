@@ -8,10 +8,8 @@ import { FaInstagram } from 'react-icons/fa'
 export const Footer = () => {
     const { t } = useTranslation('footer')
     const { t: tt } = useTranslation('navbar')
-    const links = tt('links', { returnObjects: true }) as {
-        label: string
-        href?: string
-    }[]
+    const rawLinks = tt('links', { returnObjects: true })
+    const links = Array.isArray(rawLinks) ? rawLinks : []
 
     return (
         <footer className="flex flex-col items-center gap-6 bg-galaxy-100/60 p-4 text-white backdrop-blur md:items-start">
