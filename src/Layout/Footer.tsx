@@ -103,10 +103,26 @@ export const Footer = () => {
                 </div>
             </div>
             <Divider background={'bg-gray-500'} className="opacity-40" />
-            <div className="container mx-auto text-center">
-                <p className="text-sm text-gray-400">
+            <div className="relative w-full">
+                <p className="text-center text-sm text-gray-400">
                     © 2025 Copyright. TVA: 03903010126.
                 </p>
+                <a
+                    href="https://www.syntaxeror.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="absolute right-4 top-0 flex items-center gap-1 text-sm text-gray-400 hover:underline"
+                    aria-label="Conçu par SyntaxEror"
+                >
+                    Conçu par
+                    <Image
+                        src="/logo-small.png"
+                        alt="SyntaxEror Logo"
+                        width={30}
+                        height={20}
+                        className="ml-1 h-[20px] w-[20px]"
+                    />
+                </a>
             </div>
         </footer>
     )

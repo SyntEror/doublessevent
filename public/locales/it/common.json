@@ -1,0 +1,8 @@
+{
+  "navbar": [
+    { "label": "Servizi", "href": "#services" },
+    { "label": "Chi siamo", "href": "#quisommenous" },
+    { "label": "Prenota o Richiedi un Preventivo", "href": null, "disabled": true },
+    { "label": "Le nostre offerte stand", "href": "#stands" }
+  ]
+}

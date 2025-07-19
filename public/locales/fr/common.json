@@ -1,0 +1,8 @@
+{
+  "navbar": [
+    { "label": "Services", "href": "#services" },
+    { "label": "Qui sommes nous", "href": "#quisommenous" },
+    { "label": "Réserver ou Demander un Devis", "href": null, "disabled": true },
+    { "label": "Nos offre de stands", "href": "#stands" }
+  ]
+}
