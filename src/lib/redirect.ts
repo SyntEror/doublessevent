@@ -1,5 +1,3 @@
-'use client'
-
 import useLocale from '@/hooks/useLocale'
 import languageDetector from '@/lib/i18n/languageDetector'
 import { usePathname, useRouter } from 'next/navigation'
