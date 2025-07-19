@@ -45,6 +45,7 @@ const Layout = ({ children }: Props) => {
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
                 />
+                <link rel="icon" href="/logo.png" />
             </Head>
             <main>
                 <Navbar />
