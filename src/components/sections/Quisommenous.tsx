@@ -62,7 +62,7 @@ const Quisommenous = () => {
                     </motion.div>
                 </motion.div>
                 <motion.div
-                    className="mt-12 sm:mt-16 lg:mt-20"
+                    className="mt-12 scroll-mt-24 sm:mt-16 lg:mt-20"
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"

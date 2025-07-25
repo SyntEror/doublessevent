@@ -129,7 +129,10 @@ const Footer = () => {
                     <h3 className="text-xl font-bold text-primary">
                         {t('contactUs')}
                     </h3>
-                    <a className="flex items-center" href="#localisation">
+                    <a
+                        className="flex scroll-mt-16 items-center"
+                        href="#localisation"
+                    >
                         📍 {t('contact.location')}
                     </a>
                     <p>
