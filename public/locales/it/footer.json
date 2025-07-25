@@ -3,8 +3,16 @@
   "contact": {
     "email": "info@doublessevent.com",
     "phone": "+39 350 840 7378",
-    "location": "Via Leonardo Da Vinci (VA)"
+    "location": "Via Leonardo Da Vinci (VA), Italia"
   },
-  "copyright": "© 2025 Copyright. P.IVA: 03903010126.",
-  "builtBy": "Creato da"
+  "quickLinks": "Link utili",
+  "resources": "Risorse",
+  "contactUs": "Contattaci",
+  "faq": "Domande frequenti",
+  "legalNotice": "Note legali",
+  "privacyPolicy": "Politica sulla privacy",
+  "terms": "Termini di utilizzo",
+  "copyright": "© {{year}} DoubleSS Event. Tutti i diritti riservati.",
+  "vat": "P.IVA: 03903010126.",
+  "builtBy": "Creato con ❤️ da"
 }

@@ -1,5 +1,6 @@
 'use client'
 
+import SlideInText from '@/components/reusable/SlideInText'
 import { useWindowSize } from '@/hooks/useWindowSize'
 import { motion } from 'framer-motion'
 import { useTranslation } from 'next-i18next'
@@ -43,34 +44,12 @@ export const HeaderMedia: FC = () => {
                     style={{ backgroundColor: 'rgba(0,0,0,0.15)' }}
                 />
                 {/* Animated Headline */}
-                <motion.div
-                    initial={{ opacity: 0, y: 60, scale: 0.97 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-                    className="mx absolute bottom-0 top-0 z-20 flex flex-col items-center justify-center px-6 text-left md:px-32"
-                >
-                    <motion.h1
-                        initial={{
-                            textShadow: '0 4px 24px #1114',
-                            letterSpacing: '-0.05em',
-                        }}
-                        animate={{
-                            textShadow: '0 2px 48px #f00b',
-                            letterSpacing: '0.03em',
-                        }}
-                        transition={{
-                            delay: 1,
-                            duration: 1.2,
-                            ease: 'easeInOut',
-                        }}
-                        className="px-4 text-5xl font-bold text-zinc-100 drop-shadow-lg sm:max-w-6xl md:px-0 md:text-8xl md:leading-[85px]"
-                    >
-                        {t('headline')}
-                    </motion.h1>
-                </motion.div>
+                <div className="mx absolute bottom-0 top-0 z-20 flex flex-col items-center justify-center px-6 text-left md:px-32">
+                    <SlideInText text={t('headline')} />
+                </div>
 
                 {/* Subline */}
-                <div className="absolute bottom-2 left-2 z-20 px-8 uppercase text-zinc-100 sm:bottom-7 sm:left-7 sm:text-xl md:px-28">
+                <div className="absolute bottom-2 left-2 z-20 px-8 text-zinc-100 sm:bottom-7 sm:left-7 sm:text-2xl md:px-28">
                     <div className="flex flex-row items-center font-['Mona-Sans']">
                         <motion.span
                             className="mr-1 leading-7 text-red-600"

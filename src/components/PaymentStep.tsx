@@ -15,7 +15,7 @@ export default function PaymentStep({
     return (
         <StripeProvider clientSecret={clientSecret}>
             <PaymentForm
-                onBack={onBack}
+                onBackAction={onBack}
                 totalAmount={totalAmount}
                 plan={plan}
             />

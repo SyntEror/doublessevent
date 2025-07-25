@@ -190,7 +190,7 @@ const StandOffers = () => {
                     ) : (
                         <CheckoutForm
                             plan={type}
-                            close={() => setShowModal(false)}
+                            onCloseAction={() => setShowModal(false)}
                         />
                     )}
                 </Modal>

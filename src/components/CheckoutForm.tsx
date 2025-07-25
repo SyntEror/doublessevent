@@ -3,9 +3,9 @@ import PaymentStep from '@/components/PaymentStep'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-type Props = { plan: 'standard' | 'vip'; close: () => void }
+type Props = { plan: 'standard' | 'vip'; onCloseAction: () => void }
 
-export default function CheckoutForm({ plan, close }: Props) {
+export default function CheckoutForm({ plan, onCloseAction }: Props) {
     const { t } = useTranslation('checkout')
     const [step, setStep] = useState<0 | 1>(0)
     const [clientSecret, setClientSecret] = useState<string | null>(null)
@@ -146,7 +146,7 @@ export default function CheckoutForm({ plan, close }: Props) {
             <div className="flex gap-2">
                 <button
                     type="button"
-                    onClick={close}
+                    onClick={onCloseAction}
                     className={`flex-1 rounded border-2 text-black hover:bg-gray-100 ${
                         plan === 'standard'
                             ? 'border-blue-600 hover:border-blue-700'

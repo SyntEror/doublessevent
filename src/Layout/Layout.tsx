@@ -1,4 +1,4 @@
-import { Footer } from '@/Layout/Footer'
+import FFooter from '@/Layout/Footer'
 import Head from 'next/head'
 import { type ReactNode } from 'react'
 import Navbar from './Navbar'
@@ -50,7 +50,7 @@ const Layout = ({ children }: Props) => {
             <main>
                 <Navbar />
                 {children}
-                <Footer />
+                <FFooter />
             </main>
         </>
     )
