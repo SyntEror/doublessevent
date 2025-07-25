@@ -4,11 +4,11 @@ import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 export default function PaymentForm({
-    onBack,
+    onBackAction,
     totalAmount,
     plan,
 }: {
-    onBack: () => void
+    onBackAction: () => void
     totalAmount: number
     plan: 'standard' | 'vip'
 }) {
@@ -51,7 +51,7 @@ export default function PaymentForm({
             <div className="flex gap-2">
                 <button
                     type="button"
-                    onClick={onBack}
+                    onClick={onBackAction}
                     className={`flex-1 rounded border-2 py-2 text-sm text-black md:text-base ${
                         plan === 'standard'
                             ? 'border-blue-600 hover:border-blue-700'
